@@ -1,1 +1,6 @@
 devenir: TEST
+liste:
+  - nom: TEST
+    logo: /images/images.jpg
+    lien: TEST
+    categorie: Associatif
