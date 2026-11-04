@@ -1,16 +1,13 @@
 annee: 2027
-dates: ""
-lieu: ""
-date_debut: ""
-lien_inscription: "https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027"
-reglement: ""
+dates: 12 juin 2027
+lieu: TEST
+date_debut: 2027-06-12T09:00
+lien_inscription: https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027
 programme:
   - jour: Jour 1
-    horaires: []
   - jour: Jour 2
-    horaires: []
 infos:
-  adresse: ""
-  acces: ""
-  repas: ""
-  a_prevoir: ""
+  adresse: TEST
+  acces: TEST
+  repas: TEST
+  a_prevoir: TEST
