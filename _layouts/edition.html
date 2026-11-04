@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{% assign e = page %}
+<section class="bandeau-page"><div class="conteneur"><h1>Édition {{ e.annee }}</h1><p>{{ e.sous_titre }}</p></div></section>
+{% if e.chiffres.size > 0 %}
+<section class="section section-menthe"><div class="conteneur"><h2>Le bilan en chiffres</h2>{% include chiffres.html liste=e.chiffres %}</div></section>
+{% endif %}
+<section class="section"><div class="conteneur">
+  <h2 style="margin-bottom:20px">Les moments forts</h2>
+  {% include texte.html contenu=e.resume vide="Résumé de l’édition à ajouter." %}
+  {% if e.palmares != blank %}<h3 style="margin:32px 0 12px">Palmarès et distinctions</h3>{{ e.palmares | markdownify }}{% endif %}
+</div></section>
+<section class="section section-grise" id="photos"><div class="conteneur">
+  <h2 style="margin-bottom:28px">Photos</h2>
+  {% capture alt %}Photo de l’édition {{ e.annee }}{% endcapture %}
+  {% include galerie.html photos=e.photos limite=200 alt=alt %}
+</div></section>
+<section class="section section-bleue"><div class="conteneur">
+  <h2 style="margin-bottom:28px">Le film</h2>
+  {% capture t %}Film de l’édition {{ e.annee }}{% endcapture %}
+  {% include video.html url=e.video titre=t %}
+</div></section>
+<section class="section"><div class="conteneur">
+  <h2 style="margin-bottom:28px">Revue de presse</h2>
+  {% include presse.html liste=e.presse limite=50 fond=true %}
+</div></section>

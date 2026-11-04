@@ -1,0 +1,15 @@
+# Configuration Jekyll (compilée automatiquement par GitHub Pages). Ne pas modifier sans raison.
+title: Challenge Ensemble
+lang: fr
+collections:
+  editions:
+    output: true
+    permalink: /editions/:name/
+exclude:
+  - README.md
+defaults:
+  - scope:
+      path: ""
+      type: editions
+    values:
+      layout: edition

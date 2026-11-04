@@ -1,28 +1,20 @@
 # Site du Challenge Ensemble
 
-Site statique (HTML et CSS, sans outil de construction) hébergé sur GitHub Pages,
-à l’adresse https://challenge-ensemble.pepbretillarmor.org
+Site hébergé sur GitHub Pages : https://challenge-ensemble.pepbretillarmor.org
 
-## Modifier un texte
-Ouvrir la page concernée sur GitHub, cliquer sur le crayon (Edit), remplacer le texte
-entre crochets [ ], puis « Commit changes ». Le site se met à jour en quelques minutes.
+## Modifier le contenu
+Tout se fait depuis l'interface Pages CMS : https://app.pagescms.org
+Les modifications sont en ligne environ une minute après l'enregistrement.
 
-## Ajouter une photo ou un logo
-1. Déposer l’image dans le dossier `img/` (Add file > Upload files).
-2. Dans la page, remplacer `<div class="a-remplacer">Photo</div>`
-   par `<img src="img/nom-du-fichier.jpg" alt="Description de la photo">`.
-Compresser les photos avant envoi (moins de 500 Ko chacune) : le site ne doit pas dépasser 1 Go.
+## Où se trouve quoi
+- `_data/` : les textes de chaque page (modifiés par Pages CMS)
+- `_editions/` : une fiche par édition passée (2026.md, puis 2027.md, etc.)
+- `images/` : photos, logos et documents envoyés depuis Pages CMS
+- `_layouts/`, `_includes/`, `assets/` : la mise en page (à ne pas modifier sans connaissance technique)
+- `.pages.yml` : la configuration de l'interface Pages CMS
+- `CNAME` : relie le site au sous-domaine, ne pas supprimer
 
-## Activer le compte à rebours
-Dans `index.html`, renseigner `data-date="2027-06-12T09:00"` (exemple) sur le bloc `id="rebours"`.
-
-## Ajouter une édition (ex. 2028)
-1. Copier `edition-2027.html` en `edition-2028.html` et mettre à jour les informations.
-2. Transformer l’ancienne page 2027 en archive sur le modèle de `edition-2026.html`.
-3. Mettre à jour les liens du menu (en-tête de chaque page).
-
-## Couleurs
-Toutes les couleurs sont définies en haut de `assets/style.css`.
-
-## Ne pas supprimer
-Le fichier `CNAME` : il relie le site au sous-domaine.
+## Passer à une nouvelle édition
+1. Dans « Éditions passées », créer la fiche de l'édition qui vient d'avoir lieu (chiffres, photos, vidéo, presse).
+2. Dans « Prochaine édition », changer l'année, les dates, le lieu, le programme et vider le lien d'inscription jusqu'à l'ouverture.
+L'accueil affiche automatiquement les chiffres, photos et vidéo de l'édition passée la plus récente.

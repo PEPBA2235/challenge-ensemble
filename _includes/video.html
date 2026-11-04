@@ -1,0 +1,3 @@
+{% if include.url != blank %}{% assign vid = include.url | split: 'v=' | last | split: 'youtu.be/' | last | split: 'shorts/' | last | split: '&' | first | split: '?' | first %}
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ vid }}" title="{{ include.titre | default: 'Vidéo' }}" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+{% else %}<div class="video a-remplacer">Vidéo à ajouter</div>{% endif %}

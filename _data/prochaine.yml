@@ -1,0 +1,16 @@
+annee: 2027
+dates: ""
+lieu: ""
+date_debut: ""
+lien_inscription: ""
+reglement: ""
+programme:
+  - jour: Jour 1
+    horaires: []
+  - jour: Jour 2
+    horaires: []
+infos:
+  adresse: ""
+  acces: ""
+  repas: ""
+  a_prevoir: ""

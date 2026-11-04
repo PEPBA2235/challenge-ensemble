@@ -1,109 +1,69 @@
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Challenge Ensemble, le sport inclusif</title>
-<meta name="description" content="Challenge Ensemble : deux journées de sport inclusif, de rencontres et de partage.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<a class="lien-evitement" href="#contenu">Aller au contenu</a>
-<header class="entete">
-  <div class="conteneur">
-    <a class="marque" href="index.html"><span class="logo">LOGO</span>Challenge Ensemble</a>
-    <nav class="menu menu-bureau" aria-label="Navigation principale"><a href="le-challenge.html">Le Challenge</a><a href="edition-2027.html">Édition 2027</a><a href="edition-2026.html">Archives</a><a href="partenaires.html">Partenaires</a><a href="contact.html">Contact</a><a class="bouton bouton-menthe" href="edition-2027.html#inscription">S’inscrire</a></nav>
-    <details class="menu-mobile"><summary>Menu</summary><nav class="menu" aria-label="Navigation principale"><a href="le-challenge.html">Le Challenge</a><a href="edition-2027.html">Édition 2027</a><a href="edition-2026.html">Archives</a><a href="partenaires.html">Partenaires</a><a href="contact.html">Contact</a><a class="bouton bouton-menthe" href="edition-2027.html#inscription">S’inscrire</a></nav></details>
-  </div>
-</header>
-<main id="contenu">
-
-<section class="hero">
-  <span class="a-remplacer marque-photo" style="min-height:0;padding:8px 12px">Photo plein écran de l’édition 2026</span>
+---
+layout: default
+---
+{% assign g = site.data.general %}{% assign p = site.data.prochaine %}
+{% assign derniere = site.editions | sort: 'annee' | last %}
+<section class="hero"{% if g.photo_bandeau != blank %} style="background-image:url('{{ g.photo_bandeau }}')"{% endif %}>
+  {% if g.photo_bandeau == blank %}<span class="a-remplacer marque-photo" style="min-height:0;padding:8px 12px">Photo du bandeau à ajouter</span>{% endif %}
   <div class="hero-voile"><div class="conteneur">
     <h1>Challenge<br>Ensemble</h1>
-    <p class="accroche">Deux journées de rencontres, de partage et de compétition autour du sport inclusif.</p>
-    <p class="sous-titre">Édition 2027, [dates], [lieu]</p>
+    <p class="accroche">{{ g.accroche }}</p>
+    <p class="sous-titre">Édition {{ p.annee }}{% if p.dates != blank %}, {{ p.dates }}{% endif %}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}</p>
     <div class="actions">
-      <a class="bouton bouton-menthe" href="edition-2027.html#inscription">Inscrire une équipe</a>
-      <a class="bouton bouton-contour" href="le-challenge.html">Découvrir le Challenge</a>
+      <a class="bouton bouton-menthe" href="/prochaine-edition.html#inscription">Inscrire une équipe</a>
+      <a class="bouton bouton-contour" href="/le-challenge.html">Découvrir le Challenge</a>
     </div>
   </div></div>
 </section>
 
 <section class="section-bleue" style="padding:48px 0"><div class="conteneur tuiles">
-  <a class="tuile tuile-menthe" href="edition-2027.html#inscription"><strong>Inscription 2027</strong><span>Formulaire et règlement</span></a>
-  <a class="tuile" href="edition-2027.html"><strong>Prochaine édition</strong><span>Dates, lieu, programme</span></a>
-  <a class="tuile" href="partenaires.html#devenir-partenaire"><strong>Devenir partenaire</strong><span>Pourquoi nous soutenir</span></a>
+  <a class="tuile tuile-menthe" href="/prochaine-edition.html#inscription"><strong>Inscription {{ p.annee }}</strong><span>Formulaire et règlement</span></a>
+  <a class="tuile" href="/prochaine-edition.html"><strong>Prochaine édition</strong><span>Dates, lieu, programme</span></a>
+  <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>Devenir partenaire</strong><span>Pourquoi nous soutenir</span></a>
 </div></section>
 
+{% if derniere %}
 <section class="section section-menthe" aria-labelledby="chiffres"><div class="conteneur">
-  <h2 id="chiffres">2026, la première édition</h2>
-  <div class="chiffres">
-    <div class="chiffre"><b>25</b><span>équipes</span></div>
-    <div class="chiffre"><b>≈ 175</b><span>jeunes</span></div>
-    <div class="chiffre"><b>60</b><span>bénévoles et professionnels</span></div>
-    <div class="chiffre"><b>5</b><span>départements</span></div>
-    <div class="chiffre"><b>12</b><span>ateliers sportifs, éducatifs et de sensibilisation</span></div>
-    <div class="chiffre"><b>2</b><span>journées</span></div>
-    <div class="chiffre"><b>5</b><span>partenaires financiers</span></div>
-    <div class="chiffre"><b>6 + 1</b><span>articles de presse et passage radio</span></div>
-  </div>
+  <h2 id="chiffres">L’édition {{ derniere.annee }} en chiffres</h2>
+  {% include chiffres.html liste=derniere.chiffres %}
 </div></section>
+{% endif %}
 
+{% if p.date_debut != blank %}
 <section class="section section-bleue centre" aria-labelledby="titre-rebours"><div class="conteneur">
   <h2 id="titre-rebours">Prochaine édition dans</h2>
-  <div class="rebours" id="rebours" data-date="" aria-live="off">
+  <div class="rebours" id="rebours" data-date="{{ p.date_debut }}">
     <div><b>00</b><span>Jours</span></div>
     <div><b>00</b><span>Heures</span></div>
     <div><b>00</b><span>Minutes</span></div>
     <div><b>00</b><span>Secondes</span></div>
   </div>
 </div></section>
+{% endif %}
 
+{% if derniere %}
 <section class="section" aria-labelledby="images"><div class="conteneur">
-  <h2 id="images" style="margin-bottom:28px">L’édition 2026 en images</h2>
-  <div class="galerie"><div class="a-remplacer">Photo</div><div class="a-remplacer">Photo</div><div class="a-remplacer">Photo</div><div class="a-remplacer">Photo</div><div class="a-remplacer">Photo</div><div class="a-remplacer">Photo</div><div class="a-remplacer">Photo</div><div class="a-remplacer">Photo</div></div>
-  <a class="bouton bouton-bleu" href="edition-2026.html#photos">Toutes les photos de 2026</a>
+  <h2 id="images" style="margin-bottom:28px">L’édition {{ derniere.annee }} en images</h2>
+  {% capture alt %}Photo de l’édition {{ derniere.annee }}{% endcapture %}
+  {% include galerie.html photos=derniere.photos limite=8 alt=alt %}
+  <a class="bouton bouton-bleu" href="{{ derniere.url }}#photos">Toutes les photos de {{ derniere.annee }}</a>
 </div></section>
 
 <section class="section section-bleue" aria-labelledby="film"><div class="conteneur">
-  <h2 id="film" style="margin-bottom:28px">Le film de l’édition 2026</h2>
-  <div class="video a-remplacer">Vidéo YouTube à intégrer (sous-titrée)</div>
+  <h2 id="film" style="margin-bottom:28px">Le film de l’édition {{ derniere.annee }}</h2>
+  {% capture t %}Film de l’édition {{ derniere.annee }}{% endcapture %}
+  {% include video.html url=derniere.video titre=t %}
 </div></section>
+{% endif %}
 
 <section class="section" aria-labelledby="partenaires"><div class="conteneur">
-  <div class="tete-section"><h2 id="partenaires">Partenaires</h2><a href="partenaires.html" style="font-weight:700">Tous nos partenaires</a></div>
-  <div class="logos"><div class="a-remplacer">Logo partenaire 1</div><div class="a-remplacer">Logo partenaire 2</div><div class="a-remplacer">Logo partenaire 3</div><div class="a-remplacer">Logo partenaire 4</div><div class="a-remplacer">Logo partenaire 5</div></div>
+  <div class="tete-section"><h2 id="partenaires">Partenaires</h2><a href="/partenaires.html" style="font-weight:700">Tous nos partenaires</a></div>
+  <div class="logos">{% if site.data.partenaires.liste.size > 0 %}{% for pa in site.data.partenaires.liste %}{% if pa.logo != blank %}<a href="{{ pa.lien | default: '#' }}"><img src="{{ pa.logo }}" alt="{{ pa.nom }}"></a>{% else %}<a href="{{ pa.lien | default: '#' }}" class="a-remplacer">{{ pa.nom }}</a>{% endif %}{% endfor %}{% else %}{% for i in (1..5) %}<div class="a-remplacer">Logo partenaire</div>{% endfor %}{% endif %}</div>
 </div></section>
 
+{% if derniere %}
 <section class="section section-grise" aria-labelledby="presse"><div class="conteneur">
   <h2 id="presse" style="margin-bottom:28px">Ils en parlent</h2>
-  <div class="cartes">
-    <a class="carte" href="#"><small>[Média], [date]</small><strong>[Titre de l’article]</strong></a>
-    <a class="carte" href="#"><small>[Média], [date]</small><strong>[Titre de l’article]</strong></a>
-    <a class="carte" href="#"><small>[Radio], [date]</small><strong>[Titre de l’émission]</strong></a>
-  </div>
+  {% include presse.html liste=derniere.presse limite=3 %}
 </div></section>
-
-</main>
-<footer class="pied">
-  <div class="conteneur">
-    <div>
-      <span class="nom">Challenge Ensemble</span>
-      <p>Une question ? <a href="mailto:[adresse@exemple.fr]">[adresse de contact]</a></p>
-      <p>Suivez-nous : [réseaux sociaux]</p>
-    </div>
-    <nav aria-label="Liens utiles">
-      <a href="mentions-legales.html">Mentions légales</a>
-      <a href="mentions-legales.html#confidentialite">Politique de confidentialité</a>
-      <a href="mentions-legales.html#accessibilite">Accessibilité</a>
-    </nav>
-  </div>
-</footer>
-<script src="assets/script.js"></script>
-</body>
-</html>
+{% endif %}

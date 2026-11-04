@@ -1,0 +1,1 @@
+<div class="galerie">{% if include.photos.size > 0 %}{% for p in include.photos limit: include.limite %}<img src="{{ p }}" alt="{{ include.alt }}" loading="lazy">{% endfor %}{% else %}{% for i in (1..4) %}<div class="a-remplacer">Photo à ajouter</div>{% endfor %}{% endif %}</div>
