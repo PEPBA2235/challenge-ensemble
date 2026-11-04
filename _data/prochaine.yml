@@ -1,13 +1,16 @@
 annee: 2027
-dates: TEST
-lieu: TEST
-date_debut: 2030-06-12T09:00
-lien_inscription: TEST
+dates: ""
+lieu: ""
+date_debut: ""
+lien_inscription: "https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027"
+reglement: ""
 programme:
   - jour: Jour 1
+    horaires: []
   - jour: Jour 2
+    horaires: []
 infos:
-  adresse: TEST
-  acces: TEST
-  repas: TEST
-  a_prevoir: TEST
+  adresse: ""
+  acces: ""
+  repas: ""
+  a_prevoir: ""

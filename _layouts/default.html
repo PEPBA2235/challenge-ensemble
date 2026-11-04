@@ -11,14 +11,14 @@
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-{% assign g = site.data.general %}
+{% assign g = site.data.general %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}
 {% capture menu %}
 <a href="/le-challenge.html"{% if page.url == '/le-challenge.html' %} aria-current="page"{% endif %}>Le Challenge</a>
 <a href="/prochaine-edition.html"{% if page.url == '/prochaine-edition.html' %} aria-current="page"{% endif %}>Édition {{ site.data.prochaine.annee }}</a>
 <a href="/archives.html"{% if page.url == '/archives.html' or page.collection == 'editions' %} aria-current="page"{% endif %}>Archives</a>
 <a href="/partenaires.html"{% if page.url == '/partenaires.html' %} aria-current="page"{% endif %}>Partenaires</a>
 <a href="/contact.html"{% if page.url == '/contact.html' %} aria-current="page"{% endif %}>Contact</a>
-<a class="bouton bouton-menthe" href="/prochaine-edition.html#inscription">S’inscrire</a>
+<a class="bouton bouton-menthe" href="{{ insc }}">S’inscrire</a>
 {% endcapture %}
 <a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="entete">

@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% assign g = site.data.general %}{% assign p = site.data.prochaine %}
+{% assign g = site.data.general %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}{% assign p = site.data.prochaine %}
 {% assign derniere = site.editions | sort: 'annee' | last %}
 <section class="hero"{% if g.photo_bandeau != blank %} style="background-image:url('{{ g.photo_bandeau }}')"{% endif %}>
   {% if g.photo_bandeau == blank %}<span class="a-remplacer marque-photo" style="min-height:0;padding:8px 12px">Photo du bandeau à ajouter</span>{% endif %}
@@ -10,14 +10,14 @@ layout: default
     <p class="accroche">{{ g.accroche }}</p>
     <p class="sous-titre">Édition {{ p.annee }}{% if p.dates != blank %}, {{ p.dates }}{% endif %}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}</p>
     <div class="actions">
-      <a class="bouton bouton-menthe" href="/prochaine-edition.html#inscription">Inscrire une équipe</a>
+      <a class="bouton bouton-menthe" href="{{ insc }}">Inscrire une équipe</a>
       <a class="bouton bouton-contour" href="/le-challenge.html">Découvrir le Challenge</a>
     </div>
   </div></div>
 </section>
 
 <section class="section-bleue" style="padding:48px 0"><div class="conteneur tuiles">
-  <a class="tuile tuile-menthe" href="/prochaine-edition.html#inscription"><strong>Inscription {{ p.annee }}</strong><span>Formulaire et règlement</span></a>
+  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>Inscription {{ p.annee }}</strong><span>Formulaire et règlement</span></a>
   <a class="tuile" href="/prochaine-edition.html"><strong>Prochaine édition</strong><span>Dates, lieu, programme</span></a>
   <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>Devenir partenaire</strong><span>Pourquoi nous soutenir</span></a>
 </div></section>
