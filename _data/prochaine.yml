@@ -1,16 +1,13 @@
 annee: 2027
-dates: ""
-lieu: ""
-date_debut: ""
-lien_inscription: ""
-reglement: ""
+dates: TEST
+lieu: TEST
+date_debut: 2030-06-12T09:00
+lien_inscription: TEST
 programme:
   - jour: Jour 1
-    horaires: []
   - jour: Jour 2
-    horaires: []
 infos:
-  adresse: ""
-  acces: ""
-  repas: ""
-  a_prevoir: ""
+  adresse: TEST
+  acces: TEST
+  repas: TEST
+  a_prevoir: TEST
