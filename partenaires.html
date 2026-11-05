@@ -4,16 +4,13 @@ titre: Partenaires
 ---
 {% assign pa = site.data.partenaires %}
 <section class="bandeau-page"><div class="conteneur"><h1>Nos partenaires</h1><p>Ils rendent le Challenge Ensemble possible.</p></div></section>
-{% assign categories = "Financier et institutionnel|Animation et sport" | split: "|" %}
+{% assign groupes = pa.liste | group_by: "categorie" %}
 {% assign rien = true %}
-{% for cat in categories %}
-  {% assign groupe = pa.liste | where: "categorie", cat %}
-  {% if groupe.size > 0 %}{% assign rien = false %}
+{% for gr in groupes %}{% assign rien = false %}
   <section class="section{% cycle '', ' section-grise' %}"><div class="conteneur">
-    <h2 style="margin-bottom:28px">{% if cat == "Financier et institutionnel" %}Partenaires financiers et institutionnels{% else %}Partenaires de l’animation{% endif %}</h2>
-    <div class="logos-noms">{% for x in groupe %}{% if x.lien != blank %}<a class="partenaire" href="{{ x.lien }}">{% else %}<div class="partenaire">{% endif %}<span class="partenaire-logo">{% if x.logo != blank %}<img src="{{ x.logo }}" alt="" loading="lazy">{% endif %}</span><span class="partenaire-nom">{{ x.nom }}</span>{% if x.lien != blank %}</a>{% else %}</div>{% endif %}{% endfor %}</div>
+    <h2 style="margin-bottom:28px">{% if gr.name != blank %}{{ gr.name }}{% else %}Nos partenaires{% endif %}</h2>
+    <div class="logos-noms">{% for x in gr.items %}{% if x.lien != blank %}<a class="partenaire" href="{{ x.lien }}">{% else %}<div class="partenaire">{% endif %}<span class="partenaire-logo">{% if x.logo != blank %}<img src="{{ x.logo }}" alt="" loading="lazy">{% endif %}</span><span class="partenaire-nom">{{ x.nom }}</span>{% if x.lien != blank %}</a>{% else %}</div>{% endif %}{% endfor %}</div>
   </div></section>
-  {% endif %}
 {% endfor %}
 {% if rien %}<section class="section"><div class="conteneur"><div class="logos">{% for i in (1..5) %}<div class="a-remplacer">Logo partenaire</div>{% endfor %}</div></div></section>{% endif %}
 <section class="section section-bleue" id="devenir-partenaire"><div class="conteneur deux-colonnes">
