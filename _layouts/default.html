@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v={{ site.time | date: '%s' }}">
 </head>
 <body>
 {% assign g = site.data.general %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}
@@ -45,6 +45,6 @@
     </nav>
   </div>
 </footer>
-<script src="/assets/script.js"></script>
+<script src="/assets/script.js?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>
