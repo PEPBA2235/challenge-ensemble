@@ -15,25 +15,36 @@ titre: Le Challenge
 </div></section>
 {% endif %}
 
-<section class="section" aria-labelledby="histoire"><div class="conteneur">
-  <h2 id="histoire" style="margin-bottom:40px">Notre histoire</h2>
+<section class="histoire" aria-labelledby="histoire">
+  <div class="conteneur"><h2 id="histoire" class="histoire-titre">Notre histoire</h2></div>
   {% if c.histoire contains "### " %}
   {% capture nl %}
 {% endcapture %}
   {% assign chapitres = c.histoire | split: "### " %}{% assign n = 0 %}
-  <div class="chapitres">
   {% for ch in chapitres %}{% assign ch_net = ch | strip %}{% if ch_net != "" %}{% assign n = n | plus: 1 %}
     {% assign lignes = ch_net | split: nl %}{% assign titre_ch = lignes.first | strip %}{% assign corps = ch_net | remove_first: lignes.first %}
-    <article class="chapitre">
-      <div class="chapitre-tete"><span class="chapitre-num">{% if n < 10 %}0{% endif %}{{ n }}</span><h3>{{ titre_ch }}</h3></div>
-      <div class="texte-long">{{ corps | markdownify }}</div>
+    {% assign idx = n | minus: 1 %}{% assign illu = c.illustrations_histoire[idx].image %}
+    {% assign titre_min = titre_ch | downcase %}
+    {% assign pair = n | modulo: 2 %}
+    <article class="chap{% if pair == 0 %} chap-inverse{% endif %}">
+      <div class="conteneur chap-grille">
+        {% if illu != blank %}
+          <div class="chap-media"><img src="{{ illu }}" alt="" loading="lazy"><span class="chap-num">{% if n < 10 %}0{% endif %}{{ n }}</span></div>
+        {% elsif titre_min contains "partenaire" and site.data.partenaires.liste.size > 0 %}
+          <div class="chap-media chap-logos">{% for pa in site.data.partenaires.liste %}{% if pa.logo != blank %}<span><img src="{{ pa.logo }}" alt="{{ pa.nom }}" loading="lazy"></span>{% endif %}{% endfor %}<span class="chap-num">{% if n < 10 %}0{% endif %}{{ n }}</span></div>
+        {% endif %}
+        <div class="chap-texte texte-long">
+          {% if illu == blank %}{% unless titre_min contains "partenaire" %}<span class="chap-num chap-num-seul">{% if n < 10 %}0{% endif %}{{ n }}</span>{% endunless %}{% endif %}
+          <h3>{{ titre_ch }}</h3>
+          {{ corps | markdownify }}
+        </div>
+      </div>
     </article>
   {% endif %}{% endfor %}
-  </div>
   {% else %}
-  <div class="texte-long">{% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}</div>
+  <div class="conteneur texte-long">{% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}</div>
   {% endif %}
-</div></section>
+</section>
 
 {% if c.photo != blank %}<img class="bandeau-illustre" src="{{ c.photo }}" alt="" style="max-height:520px;object-fit:cover">{% endif %}
 

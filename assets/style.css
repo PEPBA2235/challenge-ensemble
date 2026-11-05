@@ -183,14 +183,28 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 .faq details[open] summary::after{content:"–"}
 .faq details > div{padding:0 0 18px}
 
-/* Histoire en chapitres, pleine largeur */
-.chapitres{display:flex;flex-direction:column}
-.chapitre{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px 56px;padding:40px 0;border-top:2px solid var(--bleu)}
-.chapitre:last-child{border-bottom:2px solid var(--bleu)}
-.chapitre-tete{display:flex;flex-direction:column;gap:12px}
-.chapitre-num{font-family:var(--titres);font-size:4.5rem;line-height:1;color:var(--menthe);-webkit-text-stroke:2px var(--bleu)}
-.chapitre-tete h3{font-size:clamp(1.5rem,2.4vw,2.1rem);margin:0}
-.chapitre .texte-long p{max-width:none}
-@media (max-width: 760px){.chapitre{grid-template-columns:1fr;padding:28px 0}.chapitre-num{font-size:3.2rem}}
+/* Histoire en chapitres illustrés, en zigzag */
+.histoire-titre{padding:72px 0 8px}
+.chap{padding:56px 0}
+.chap:nth-of-type(even){background:var(--gris-clair)}
+.chap-grille{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center}
+.chap-inverse .chap-grille{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.chap-inverse .chap-media{order:2}
+.chap-grille > .chap-texte:only-child{grid-column:1 / -1;max-width:900px}
+.chap-media{position:relative}
+.chap-media img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:6px}
+.chap-num{position:absolute;top:-22px;left:-14px;background:var(--menthe);color:var(--bleu);font-family:var(--titres);font-size:2.6rem;line-height:1;padding:10px 16px;border-radius:6px}
+.chap-inverse .chap-num{left:auto;right:-14px}
+.chap-num-seul{position:static;display:inline-block;margin-bottom:16px}
+.chap-texte h3{font-size:clamp(1.6rem,2.8vw,2.4rem);margin:0 0 18px}
+.chap-texte p,.chap-texte ul{max-width:none}
+.chap-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;background:var(--blanc);padding:28px;border-radius:6px;border:1px solid #E5E7EB}
+.chap-logos span:not(.chap-num){height:80px;display:flex;align-items:center;justify-content:center}
+.chap-logos img{max-height:72px;max-width:100%;width:auto;aspect-ratio:auto;object-fit:contain;border-radius:0}
+@media (max-width: 800px){
+  .chap-grille,.chap-inverse .chap-grille{grid-template-columns:1fr;gap:32px}
+  .chap-inverse .chap-media{order:0}
+  .chap-num,.chap-inverse .chap-num{left:12px;right:auto;top:-18px;font-size:2rem}
+}
 .faq{max-width:none}
 .faq .texte-long p{max-width:80ch}

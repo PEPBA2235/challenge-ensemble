@@ -73,6 +73,12 @@ organisateurs: |-
 
   Une aventure collective, portée avant tout par des personnes engagées et animées par l’envie de rassembler les jeunes autour du sport.
 photo: ""
+illustrations_histoire:
+  - image: /images/histoire-1.jpg
+  - image: /images/histoire-2.jpg
+  - image: /images/histoire-3.jpg
+  - image: ""
+  - image: /images/histoire-5.jpg
 citation: Ici, l’essentiel n’est pas de gagner, mais de jouer ensemble.
 valeurs_cles:
   - Inclusion
