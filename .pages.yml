@@ -126,6 +126,7 @@ content:
         list: true
         fields:
           - { name: image, label: Photo, type: image }
+          - { name: image2, label: Photo secondaire (facultative), type: image }
       - { name: citation, label: Phrase mise en avant (valeurs), type: string }
       - { name: valeurs, label: Nos valeurs, type: text }
       - { name: public, label: À qui s’adresse le Challenge, type: text }
