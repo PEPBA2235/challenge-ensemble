@@ -1,11 +1,29 @@
-devenir: ""
 liste:
-  - { nom: Caisse d’Épargne, logo: /images/partenaire-caisse-epargne.jpg, lien: "", categorie: Partenaires financiers et institutionnels }
-  - { nom: Kiwanis Club de Saint-Brieuc Armor, logo: /images/partenaire-kiwanis.jpg, lien: "", categorie: Partenaires financiers et institutionnels }
-  - { nom: PEP Bretill’Armor, logo: /images/partenaire-pep-bretillarmor.jpg, lien: "", categorie: Partenaires financiers et institutionnels }
-  - { nom: Conseil départemental des Côtes-d’Armor, logo: /images/partenaire-departement-cotes-armor.png, lien: "", categorie: Partenaires financiers et institutionnels }
-  - { nom: En Avant Guingamp, logo: /images/partenaire-en-avant-guingamp.png, lien: "", categorie: Partenaires financiers et institutionnels }
-  - { nom: District de Football des Côtes-d’Armor, logo: /images/partenaire-district-football-22.jpg, lien: "", categorie: Partenaires de l’animation }
-  - { nom: Ligue de Bretagne de Football, logo: /images/partenaire-ligue-bretagne-football.jpg, lien: "", categorie: Partenaires de l’animation }
-  - { nom: Comité Départemental du Sport Adapté (CDSA22), logo: /images/partenaire-cdsa22.jpg, lien: "", categorie: Partenaires de l’animation }
-  - { nom: "Stéphane Appriou, éducateur sportif à Lanrodec", logo: /images/partenaire-stephane-appriou.png, lien: "", categorie: Partenaires de l’animation }
+  - nom: Caisse d’Épargne
+    logo: /images/partenaire-caisse-epargne.jpg
+    categorie: Partenaires financiers et institutionnels
+  - nom: Kiwanis Club de Saint-Brieuc Armor
+    logo: /images/partenaire-kiwanis.jpg
+    categorie: Partenaires financiers et institutionnels
+  - nom: PEP Bretill’Armor
+    logo: /images/partenaire-pep-bretillarmor.jpg
+    categorie: Partenaires financiers et institutionnels
+  - nom: Conseil départemental des Côtes-d’Armor
+    logo: /images/partenaire-departement-cotes-armor.png
+    categorie: Partenaires financiers et institutionnels
+  - nom: En Avant Guingamp
+    logo: /images/partenaire-en-avant-guingamp.png
+    categorie: Partenaires financiers et institutionnels
+  - nom: District de Football des Côtes-d’Armor
+    logo: /images/capture-decran-2026-11-05-122836.png
+    lien: https://foot22.fff.fr/?doing_wp_cron=1793878062.3194310665130615234375
+    categorie: Partenaires de l’animation
+  - nom: Ligue de Bretagne de Football
+    logo: /images/partenaire-ligue-bretagne-football.jpg
+    categorie: Partenaires de l’animation
+  - nom: Comité Départemental du Sport Adapté (CDSA22)
+    logo: /images/partenaire-cdsa22.jpg
+    categorie: Partenaires de l’animation
+  - nom: Stéphane Appriou, éducateur sportif à Lanrodec
+    logo: /images/partenaire-stephane-appriou.png
+    categorie: Partenaires de l’animation
