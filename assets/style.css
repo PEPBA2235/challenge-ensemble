@@ -185,8 +185,9 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 
 /* Ouverture */
 .pc-hero{position:relative;background:linear-gradient(120deg,var(--bleu) 55%,#3557ea);color:var(--blanc);overflow:hidden}
-.pc-lettre{position:absolute;left:3%;top:50%;transform:translateY(-50%);font-family:var(--titres);font-size:clamp(14rem,30vw,26rem);line-height:.8;color:var(--menthe);opacity:.35;pointer-events:none}
-.pc-hero-texte{position:relative;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:14px;padding-top:48px;padding-bottom:96px}
+.pc-hero-grille{display:flex;align-items:center;justify-content:space-between;gap:40px;padding-top:48px;padding-bottom:96px}
+.pc-hero-texte{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.pc-hero-logo{width:clamp(140px,20vw,240px);aspect-ratio:1;border-radius:50%;background:#fff;padding:10px;object-fit:contain;box-shadow:12px 12px 0 var(--menthe);flex:none}
 .pc-hero h1{font-size:clamp(2.8rem,7vw,5.6rem);line-height:.92}
 .pc-sur-titre{margin:0;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--menthe)}
 .pc-intro{margin:0;max-width:52ch;font-size:1.15rem;color:var(--texte-sur-bleu)}
@@ -216,7 +217,9 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 .pc-ch-logos img{max-height:52px;max-width:100%;object-fit:contain}
 .pc-ch-texte{border-top:4px solid var(--bleu);padding-top:20px}
 .pc-colonnes{column-count:2;column-gap:48px}
-.pc-colonnes p,.pc-colonnes ul{break-inside:avoid}
+.pc-colonnes{column-fill:balance}
+.pc-colonnes p{orphans:3;widows:3;margin:0 0 .9em}
+.pc-colonnes > :first-child{margin-top:0}
 .pc-colonnes ul{list-style:none;padding:0;margin:0 0 1em}
 .pc-colonnes li{background:var(--clair-bleu);border-left:5px solid var(--menthe);padding:10px 14px;margin:0 0 8px;break-inside:avoid}
 .pc-ch:nth-of-type(even) .pc-colonnes li{background:var(--blanc)}
@@ -265,7 +268,7 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
   .pc-ch-media{max-width:300px}
   .pc-ch-inverse .pc-ch-media .pc-num{left:-12px;right:auto}
   .pc-qui-grille{grid-template-columns:1fr}
+  .pc-hero-logo{display:none}
   .pc-bande-inner{width:94%;padding:24px;grid-template-columns:repeat(2,minmax(0,1fr))}
   .pc-repere b{font-size:2rem}
-  .pc-lettre{font-size:14rem;left:-10px}
 }

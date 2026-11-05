@@ -7,12 +7,13 @@ titre: Le Challenge
 
 <!-- Ouverture -->
 <section class="pc-hero">
-  <span class="pc-lettre" aria-hidden="true">E</span>
-  <div class="conteneur pc-hero-texte">
+  <div class="conteneur pc-hero-grille"><div class="pc-hero-texte">
     <h1>Le Challenge<br>Ensemble</h1>
     <p class="pc-sur-titre">Sport · Partage · Inclusion</p>
     <p class="pc-intro">{{ c.intro }}</p>
     <a class="bouton bouton-contour" href="#histoire">Notre histoire</a>
+  </div>
+  {% if site.data.general.logo != blank %}<img class="pc-hero-logo" src="{{ site.data.general.logo }}" alt="">{% endif %}
   </div>
 </section>
 {% if c.reperes.size > 0 %}
