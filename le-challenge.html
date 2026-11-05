@@ -3,75 +3,115 @@ layout: default
 titre: Le Challenge
 ---
 {% assign c = site.data.challenge %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}
-<section class="bandeau-page"><div class="conteneur">
-  <h1>Le Challenge Ensemble</h1>
-  <p>{{ c.intro }}</p>
-  {% if c.valeurs_cles.size > 0 %}<ul class="pastilles" aria-label="Nos valeurs">{% for v in c.valeurs_cles %}<li>{{ v }}</li>{% endfor %}</ul>{% endif %}
-</div></section>
+<div class="pc">
 
+<!-- Ouverture -->
+<section class="pc-hero">
+  <span class="pc-lettre" aria-hidden="true">E</span>
+  <div class="conteneur pc-hero-texte">
+    <h1>Le Challenge<br>Ensemble</h1>
+    <p class="pc-sur-titre">Sport · Partage · Inclusion</p>
+    <p class="pc-intro">{{ c.intro }}</p>
+    <a class="bouton bouton-contour" href="#histoire">Notre histoire</a>
+  </div>
+</section>
 {% if c.reperes.size > 0 %}
-<section class="section section-menthe" style="padding:48px 0" aria-label="Le Challenge en bref"><div class="conteneur">
-  {% include chiffres.html liste=c.reperes %}
-</div></section>
+<div class="pc-bande"><div class="pc-bande-inner">
+  {% for r in c.reperes %}<div class="pc-repere"><b>{{ r.valeur }}</b><span>{{ r.libelle }}</span></div>{% endfor %}
+</div></div>
 {% endif %}
 
-<section class="histoire" aria-labelledby="histoire">
-  <div class="conteneur"><h2 id="histoire" class="histoire-titre">Notre histoire</h2></div>
-  {% if c.histoire contains "### " %}
-  {% capture nl %}
-{% endcapture %}
-  {% assign chapitres = c.histoire | split: "### " %}{% assign n = 0 %}
-  {% for ch in chapitres %}{% assign ch_net = ch | strip %}{% if ch_net != "" %}{% assign n = n | plus: 1 %}
-    {% assign lignes = ch_net | split: nl %}{% assign titre_ch = lignes.first | strip %}{% assign corps = ch_net | remove_first: lignes.first %}
-    {% assign idx = n | minus: 1 %}{% assign illu = c.illustrations_histoire[idx].image %}
-    {% assign titre_min = titre_ch | downcase %}
-    {% assign pair = n | modulo: 2 %}
-    <article class="chap{% if pair == 0 %} chap-inverse{% endif %}">
-      <div class="conteneur chap-grille">
-        {% if illu != blank %}
-          <div class="chap-media"><img src="{{ illu }}" alt="" loading="lazy"><span class="chap-num">{% if n < 10 %}0{% endif %}{{ n }}</span></div>
-        {% elsif titre_min contains "partenaire" and site.data.partenaires.liste.size > 0 %}
-          <div class="chap-media chap-logos">{% for pa in site.data.partenaires.liste %}{% if pa.logo != blank %}<span><img src="{{ pa.logo }}" alt="{{ pa.nom }}" loading="lazy"></span>{% endif %}{% endfor %}<span class="chap-num">{% if n < 10 %}0{% endif %}{{ n }}</span></div>
-        {% endif %}
-        <div class="chap-texte texte-long">
-          {% if illu == blank %}{% unless titre_min contains "partenaire" %}<span class="chap-num chap-num-seul">{% if n < 10 %}0{% endif %}{{ n }}</span>{% endunless %}{% endif %}
-          <h3>{{ titre_ch }}</h3>
-          {{ corps | markdownify }}
-        </div>
-      </div>
-    </article>
-  {% endif %}{% endfor %}
-  {% else %}
-  <div class="conteneur texte-long">{% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}</div>
-  {% endif %}
-</section>
+<!-- Histoire, chapitre par chapitre -->
+<h2 id="histoire" class="visuellement-cache">Notre histoire</h2>
+{% if c.histoire contains "### " %}
+{% assign chapitres = c.histoire | split: "### " %}{% assign n = 0 %}
+{% for ch in chapitres %}{% assign ch_net = ch | strip %}{% if ch_net != "" %}{% assign n = n | plus: 1 %}
+{% assign lignes = ch_net | newline_to_br | split: "<br />" %}{% assign titre_ch = lignes.first | strip %}{% assign corps = ch_net | remove_first: titre_ch | markdownify %}
+{% assign idx = n | minus: 1 %}{% assign illu = c.illustrations_histoire[idx].image %}{% assign illu2 = c.illustrations_histoire[idx].image2 %}
+{% assign titre_min = titre_ch | downcase %}{% assign modele = n | modulo: 5 %}
+{% if titre_min contains "partenaire" %}{% assign modele = "logos" %}{% endif %}
 
-{% if c.photo != blank %}<img class="bandeau-illustre" src="{{ c.photo }}" alt="" style="max-height:520px;object-fit:cover">{% endif %}
+{% if modele == 1 %}
+<section class="pc-ch pc-a"><div class="conteneur pc-a-grille">
+  <div class="pc-a-texte"><span class="pc-num">{% if n < 10 %}0{% endif %}{{ n }}</span><h3>{{ titre_ch }}</h3>{{ corps }}</div>
+  <div class="pc-a-visuels">{% if illu != blank %}<img src="{{ illu }}" alt="" loading="lazy">{% endif %}<div class="pc-degrade" aria-hidden="true"></div></div>
+</div></section>
 
-<section class="section section-bleue" aria-labelledby="valeurs"><div class="conteneur">
-  <h2 id="valeurs" style="margin-bottom:32px">Nos valeurs</h2>
-  <div class="deux-colonnes" style="align-items:center">
-    {% if c.citation != blank %}<blockquote class="citation">{{ c.citation }}</blockquote>{% endif %}
-    <div class="texte-long">{% include texte.html contenu=c.valeurs vide="Valeurs à ajouter." %}</div>
+{% elsif modele == 2 %}
+<section class="pc-ch pc-b"><div class="conteneur pc-b-grille">
+  <div class="pc-b-carre" aria-hidden="true"><img src="{{ site.data.general.logo }}" alt=""></div>
+  {% if illu != blank %}<img class="pc-b-photo" src="{{ illu }}" alt="" loading="lazy">{% endif %}
+  <div class="pc-b-texte"><span class="pc-rond" aria-hidden="true"></span><span class="pc-num">{% if n < 10 %}0{% endif %}{{ n }}</span><h3>{{ titre_ch }}</h3>{{ corps }}</div>
+</div></section>
+
+{% elsif modele == 3 %}
+<section class="pc-ch pc-c"><div class="conteneur">
+  <div class="pc-c-tete"><span class="pc-num">{% if n < 10 %}0{% endif %}{{ n }}</span><h3>{{ titre_ch }}</h3></div>
+  <div class="pc-c-grille">
+    <div class="pc-c-texte">{{ corps }}</div>
+    {% if illu != blank %}<div class="pc-c-photo"><span class="pc-barre" aria-hidden="true"></span><img src="{{ illu }}" alt="" loading="lazy"></div>{% endif %}
   </div>
 </div></section>
 
-<section class="section section-grise"><div class="conteneur deux-colonnes">
-  <div class="carte-bloc texte-long"><h2 style="margin-bottom:20px">Pour qui ?</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
-  <div class="carte-bloc texte-long"><h2 style="margin-bottom:20px">Les organisateurs</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
+{% elsif modele == "logos" %}
+<section class="pc-ch pc-d"><div class="conteneur">
+  <div class="pc-d-bloc"><span class="pc-num">{% if n < 10 %}0{% endif %}{{ n }}</span><h3>{{ titre_ch }}</h3>{{ corps }}</div>
+  <div class="pc-d-logos">{% for pa in site.data.partenaires.liste %}{% if pa.logo != blank %}<span><img src="{{ pa.logo }}" alt="{{ pa.nom }}" loading="lazy"></span>{% endif %}{% endfor %}</div>
+</div></section>
+
+{% else %}
+<section class="pc-ch pc-e"><div class="conteneur pc-e-grille">
+  <span class="pc-chiffre" aria-hidden="true">1</span>
+  <div class="pc-e-photos">
+    {% if illu != blank %}<img class="pc-e-p1" src="{{ illu }}" alt="" loading="lazy">{% endif %}
+    {% if illu2 != blank %}<img class="pc-e-p2" src="{{ illu2 }}" alt="" loading="lazy">{% endif %}
+  </div>
+  <div class="pc-e-texte"><span class="pc-num">{% if n < 10 %}0{% endif %}{{ n }}</span><h3>{{ titre_ch }}</h3>{{ corps }}</div>
+</div></section>
+{% endif %}
+{% endif %}{% endfor %}
+{% else %}
+<section class="pc-ch"><div class="conteneur texte-long">{% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}</div></section>
+{% endif %}
+
+<!-- Valeurs -->
+<section class="pc-valeurs" aria-labelledby="valeurs"><div class="conteneur">
+  <div class="pc-valeurs-tete">
+    <h2 id="valeurs">Nos valeurs</h2>
+    {% if c.citation != blank %}<p class="pc-citation">{{ c.citation }}</p>{% endif %}
+  </div>
+  {% if c.valeurs_cles.size > 0 %}
+  <ul class="pc-cartes-valeurs">{% for v in c.valeurs_cles %}{% assign i = forloop.index0 | modulo: 5 %}
+    <li><span class="pc-icone pc-icone-{{ i }}" aria-hidden="true">{% case i %}
+      {% when 0 %}<svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><circle cx="5" cy="9" r="2.4"/><circle cx="19" cy="9" r="2.4"/><path d="M7 21v-4a5 5 0 0 1 10 0v4M1.5 19v-2.5a3.5 3.5 0 0 1 4-3.4M22.5 19v-2.5a3.5 3.5 0 0 0-4-3.4"/></svg>
+      {% when 1 %}<svg viewBox="0 0 24 24"><path d="M2 12l4-4 4 2 4-3 4 3 4-2"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-4M8 16l2 2M11 17l2 2"/></svg>
+      {% when 2 %}<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+      {% when 3 %}<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      {% else %}<svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M6 4h12v4a6 6 0 0 1-12 0zM6 6H3a3 3 0 0 0 3 4M18 6h3a3 3 0 0 1-3 4"/></svg>
+    {% endcase %}</span><strong>{{ v }}</strong></li>{% endfor %}
+  </ul>
+  {% endif %}
+  <div class="pc-valeurs-texte texte-long">{% include texte.html contenu=c.valeurs vide="Valeurs à ajouter." %}</div>
+</div></section>
+
+<!-- Pour qui / organisateurs -->
+<section class="pc-qui"><div class="conteneur pc-qui-grille">
+  <div class="pc-qui-bloc pc-qui-1 texte-long"><h2>Pour qui ?</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
+  <div class="pc-qui-bloc pc-qui-2 texte-long"><h2>Les organisateurs</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
 </div></section>
 
 {% if c.faq.size > 0 %}
-<section class="section" id="faq" aria-labelledby="titre-faq"><div class="conteneur">
-  <h2 id="titre-faq" style="margin-bottom:28px">Questions fréquentes</h2>
+<section class="pc-faq" id="faq" aria-labelledby="titre-faq"><div class="conteneur">
+  <h2 id="titre-faq">Questions fréquentes</h2>
   <div class="faq">{% for q in c.faq %}<details><summary>{{ q.question }}</summary><div class="texte-long">{{ q.reponse | markdownify }}</div></details>{% endfor %}</div>
 </div></section>
 {% endif %}
 
-<section class="section section-bleue centre"><div class="conteneur">
-  <h2 style="margin-bottom:24px">Envie de nous rejoindre ?</h2>
-  <div class="actions" style="justify-content:center">
+<section class="pc-appel"><div class="conteneur">
+  <h2>Envie de nous rejoindre ?</h2>
+  <div class="actions">
     <a class="bouton bouton-menthe" href="{{ insc }}">Inscrire une équipe</a>
     <a class="bouton bouton-contour" href="/partenaires.html#devenir-partenaire">Devenir partenaire</a>
   </div>
 </div></section>
+</div>

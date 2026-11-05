@@ -79,6 +79,7 @@ illustrations_histoire:
   - image: /images/histoire-3.jpg
   - image: ""
   - image: /images/histoire-5.jpg
+    image2: /images/histoire-5b.jpg
 citation: Ici, l’essentiel n’est pas de gagner, mais de jouer ensemble.
 valeurs_cles:
   - Inclusion
