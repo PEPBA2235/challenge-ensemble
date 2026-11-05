@@ -16,7 +16,15 @@ content:
       - { name: accroche, label: Phrase d’accroche (page d’accueil), type: text }
       - { name: logo, label: Logo, type: image }
       - { name: photo_bandeau, label: Grande photo de la page d’accueil, type: image, description: "Photo horizontale, en bonne définition, avec autorisation de diffusion." }
-      - { name: email, label: Adresse mail de contact, type: string }
+      - name: contacts
+        label: Contacts
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{sujet}" } }
+        fields:
+          - { name: sujet, label: Sujet (ex. Questions sur le tournoi), type: string }
+          - { name: nom, label: Nom, type: string }
+          - { name: telephone, label: Téléphone, type: string }
+          - { name: email, label: Mail, type: string }
       - name: reseaux
         label: Réseaux sociaux
         type: object
@@ -61,6 +69,7 @@ content:
           - { name: adresse, label: Adresse du lieu, type: text }
           - { name: acces, label: Accès (transports, stationnement, accessibilité), type: text }
           - { name: repas, label: Repas, type: text }
+          - { name: hebergement, label: Hébergement, type: text }
           - { name: a_prevoir, label: À prévoir, type: text }
 
   - name: editions
@@ -101,7 +110,23 @@ content:
     format: yaml
     fields:
       - { name: intro, label: Présentation courte, type: text }
-      - { name: histoire, label: Notre histoire, type: text }
+      - { name: valeurs_cles, label: Valeurs en un mot (pastilles), type: string, list: true }
+      - name: reperes
+        label: Repères en chiffres
+        type: object
+        list: true
+        fields:
+          - { name: valeur, label: Chiffre ou repère, type: string }
+          - { name: libelle, label: Libellé, type: string }
+      - { name: histoire, label: "Notre histoire (chaque titre commence par ### )", type: text }
+      - name: illustrations_histoire
+        label: Photos des chapitres de l’histoire (dans l’ordre)
+        description: "1re photo = chapitre 1, etc. Laisser une photo vide pour un chapitre sans illustration (le chapitre sur les partenaires affiche alors leurs logos)."
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Photo, type: image }
+      - { name: citation, label: Phrase mise en avant (valeurs), type: string }
       - { name: valeurs, label: Nos valeurs, type: text }
       - { name: public, label: À qui s’adresse le Challenge, type: text }
       - { name: organisateurs, label: Les organisateurs, type: text }
