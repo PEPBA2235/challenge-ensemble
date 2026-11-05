@@ -26,7 +26,7 @@ titre: Le Challenge
 {% if c.histoire contains "### " %}
 {% assign chapitres = c.histoire | split: "### " %}{% assign n = 0 %}
 {% for ch in chapitres %}{% assign ch_net = ch | strip %}{% if ch_net != "" %}{% assign n = n | plus: 1 %}
-{% assign lignes = ch_net | newline_to_br | split: "<br />" %}{% assign titre_ch = lignes.first | strip %}{% assign corps = ch_net | remove_first: titre_ch | markdownify %}
+{% assign lignes = ch_net | newline_to_br | split: "<br />" %}{% assign titre_ch = lignes.first | strip %}{% assign corps_complet = ch_net | remove_first: titre_ch | markdownify %}{% assign paras = corps_complet | split: "</p>" %}{% capture debut %}{{ paras.first }}</p>{% endcapture %}{% assign suite = corps_complet | remove_first: debut | strip %}{% capture corps %}{{ debut }}{% if suite != "" %}<details class="pc-suite"><summary><span class="ouvrir">Lire la suite</span><span class="fermer">Réduire</span></summary>{{ suite }}</details>{% endif %}{% endcapture %}
 {% assign idx = n | minus: 1 %}{% assign illu = c.illustrations_histoire[idx].image %}{% assign illu2 = c.illustrations_histoire[idx].image2 %}
 {% assign titre_min = titre_ch | downcase %}{% assign modele = n | modulo: 5 %}
 {% if titre_min contains "partenaire" %}{% assign modele = "logos" %}{% endif %}
