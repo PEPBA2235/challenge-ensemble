@@ -172,9 +172,6 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 .lecture{max-width:820px}
 .pastilles{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-wrap:wrap;gap:10px}
 .pastilles li{background:var(--menthe);color:var(--bleu);font-weight:700;padding:8px 16px;border-radius:999px}
-.recit h3{display:flex;align-items:center;gap:12px;color:var(--bleu)}
-.recit h3::before{content:"";width:14px;height:14px;background:var(--menthe);border:3px solid var(--bleu);border-radius:50%;flex:none}
-.recit p,.recit ul{max-width:none}
 .citation{margin:0 0 28px;padding:0 0 0 20px;border-left:6px solid var(--menthe);font-family:var(--titres);text-transform:uppercase;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.15}
 .section-bleue .texte-long p{max-width:none}
 .carte-bloc{background:var(--blanc);padding:32px}
@@ -185,3 +182,15 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 .faq summary::after{content:"+";position:absolute;right:4px;top:12px;font-family:var(--titres);font-size:1.8rem}
 .faq details[open] summary::after{content:"–"}
 .faq details > div{padding:0 0 18px}
+
+/* Histoire en chapitres, pleine largeur */
+.chapitres{display:flex;flex-direction:column}
+.chapitre{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px 56px;padding:40px 0;border-top:2px solid var(--bleu)}
+.chapitre:last-child{border-bottom:2px solid var(--bleu)}
+.chapitre-tete{display:flex;flex-direction:column;gap:12px}
+.chapitre-num{font-family:var(--titres);font-size:4.5rem;line-height:1;color:var(--menthe);-webkit-text-stroke:2px var(--bleu)}
+.chapitre-tete h3{font-size:clamp(1.5rem,2.4vw,2.1rem);margin:0}
+.chapitre .texte-long p{max-width:none}
+@media (max-width: 760px){.chapitre{grid-template-columns:1fr;padding:28px 0}.chapitre-num{font-size:3.2rem}}
+.faq{max-width:none}
+.faq .texte-long p{max-width:80ch}
