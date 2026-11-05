@@ -14,6 +14,10 @@ Les modifications sont en ligne environ une minute après l'enregistrement.
 - `.pages.yml` : la configuration de l'interface Pages CMS
 - `CNAME` : relie le site au sous-domaine, ne pas supprimer
 
+## Page « Le Challenge »
+L'histoire se modifie bloc par bloc (« Notre histoire (un bloc par chapitre) ») : un titre, un texte, une photo.
+Pour ajouter un chapitre, cliquer sur « Add an entry » ; pour changer l'ordre, faire glisser les blocs.
+
 ## Passer à une nouvelle édition
 1. Dans « Éditions passées », créer la fiche de l'édition qui vient d'avoir lieu (chiffres, photos, vidéo, presse).
 2. Dans « Prochaine édition », changer l'année, les dates, le lieu, le programme et vider le lien d'inscription jusqu'à l'ouverture.

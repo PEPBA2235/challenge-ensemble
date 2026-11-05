@@ -24,31 +24,23 @@ titre: Le Challenge
 
 <!-- Histoire, chapitre par chapitre -->
 <h2 id="histoire" class="visuellement-cache">Notre histoire</h2>
-{% if c.histoire contains "### " %}
-{% assign chapitres = c.histoire | split: "### " %}{% assign n = 0 %}
-{% for ch in chapitres %}{% assign ch_net = ch | strip %}{% if ch_net != "" %}{% assign n = n | plus: 1 %}
-{% assign lignes = ch_net | newline_to_br | split: "<br />" %}{% assign titre_ch = lignes.first | strip %}{% assign corps = ch_net | remove_first: titre_ch | markdownify %}
-{% assign idx = n | minus: 1 %}{% assign illu = c.illustrations_histoire[idx].image %}{% assign illu2 = c.illustrations_histoire[idx].image2 %}
-{% assign titre_min = titre_ch | downcase %}{% assign pair = n | modulo: 2 %}
+{% for chap in c.chapitres %}{% assign n = forloop.index %}{% assign pair = n | modulo: 2 %}
 <section class="pc-ch{% if pair == 0 %} pc-ch-inverse{% endif %}"><div class="conteneur pc-ch-grille">
   <div class="pc-ch-media">
     <span class="pc-num">{% if n < 10 %}0{% endif %}{{ n }}</span>
-    {% if illu != blank %}
-      <img class="pc-ch-photo" src="{{ illu }}" alt="" loading="lazy">
-      {% if illu2 and illu2 != "" %}<img class="pc-ch-photo2" src="{{ illu2 }}" alt="" loading="lazy">{% endif %}
-    {% elsif titre_min contains "partenaire" %}
+    {% if chap.logos_partenaires %}
       <div class="pc-ch-logos">{% for pa in site.data.partenaires.liste %}{% if pa.logo != blank %}<span><img src="{{ pa.logo }}" alt="{{ pa.nom }}" loading="lazy"></span>{% endif %}{% endfor %}</div>
+    {% elsif chap.photo != blank %}
+      <img class="pc-ch-photo" src="{{ chap.photo }}" alt="" loading="lazy">
+      {% if chap.photo2 != blank %}<img class="pc-ch-photo2" src="{{ chap.photo2 }}" alt="" loading="lazy">{% endif %}
     {% endif %}
   </div>
   <div class="pc-ch-texte">
-    <h3>{{ titre_ch }}</h3>
-    <div class="pc-colonnes texte-long">{{ corps }}</div>
+    <h3>{{ chap.titre }}</h3>
+    <div class="pc-colonnes texte-long">{{ chap.texte | markdownify }}</div>
   </div>
 </div></section>
-{% endif %}{% endfor %}
-{% else %}
-<section class="pc-ch"><div class="conteneur texte-long">{% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}</div></section>
-{% endif %}
+{% endfor %}
 
 <!-- Valeurs -->
 <section class="pc-valeurs" aria-labelledby="valeurs"><div class="conteneur">
