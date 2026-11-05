@@ -11,7 +11,7 @@ titre: Partenaires
   {% if groupe.size > 0 %}{% assign rien = false %}
   <section class="section{% cycle '', ' section-grise' %}"><div class="conteneur">
     <h2 style="margin-bottom:28px">{% if cat == "Financier et institutionnel" %}Partenaires financiers et institutionnels{% else %}Partenaires de l’animation{% endif %}</h2>
-    <div class="logos">{% for x in groupe %}{% if x.lien != blank %}<a href="{{ x.lien }}" class="{% if x.logo == blank %}logo-nom{% endif %}">{% else %}<span class="{% if x.logo == blank %}logo-nom{% endif %}">{% endif %}{% if x.logo != blank %}<img src="{{ x.logo }}" alt="{{ x.nom }}">{% else %}{{ x.nom }}{% endif %}{% if x.lien != blank %}</a>{% else %}</span>{% endif %}{% endfor %}</div>
+    <div class="logos-noms">{% for x in groupe %}{% if x.lien != blank %}<a class="partenaire" href="{{ x.lien }}">{% else %}<div class="partenaire">{% endif %}<span class="partenaire-logo">{% if x.logo != blank %}<img src="{{ x.logo }}" alt="" loading="lazy">{% endif %}</span><span class="partenaire-nom">{{ x.nom }}</span>{% if x.lien != blank %}</a>{% else %}</div>{% endif %}{% endfor %}</div>
   </div></section>
   {% endif %}
 {% endfor %}

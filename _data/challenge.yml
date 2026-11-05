@@ -73,6 +73,22 @@ organisateurs: |-
 
   Une aventure collective, portée avant tout par des personnes engagées et animées par l’envie de rassembler les jeunes autour du sport.
 photo: ""
+citation: Ici, l’essentiel n’est pas de gagner, mais de jouer ensemble.
+valeurs_cles:
+  - Inclusion
+  - Respect
+  - Solidarité
+  - Partage
+  - Dépassement de soi
+reperes:
+  - valeur: 10 à 15 ans
+    libelle: filles et garçons
+  - valeur: "25"
+    libelle: équipes
+  - valeur: 5 contre 5
+    libelle: format du tournoi
+  - valeur: "2"
+    libelle: journées, ateliers puis tournoi
 faq:
   - question: Qui peut participer au Challenge Ensemble ?
     reponse: |-

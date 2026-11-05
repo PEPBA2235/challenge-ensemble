@@ -2,24 +2,48 @@
 layout: default
 titre: Le Challenge
 ---
-{% assign c = site.data.challenge %}
-<section class="bandeau-page"><div class="conteneur"><h1>Le Challenge Ensemble</h1><p>{{ c.intro }}</p></div></section>
-<section class="section"><div class="conteneur deux-colonnes">
-  <div class="texte-long">
-    <h2 style="margin-bottom:20px">Notre histoire</h2>
-    {% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}
-    <h2 style="margin:40px 0 20px">Nos valeurs</h2>
-    {% include texte.html contenu=c.valeurs vide="Valeurs à ajouter." %}
-  </div>
-  {% if c.photo != blank %}<img src="{{ c.photo }}" alt="" style="width:100%;object-fit:cover">{% else %}<div class="a-remplacer" style="min-height:360px">Photo à ajouter</div>{% endif %}
+{% assign c = site.data.challenge %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}
+<section class="bandeau-page"><div class="conteneur">
+  <h1>Le Challenge Ensemble</h1>
+  <p>{{ c.intro }}</p>
+  {% if c.valeurs_cles.size > 0 %}<ul class="pastilles" aria-label="Nos valeurs">{% for v in c.valeurs_cles %}<li>{{ v }}</li>{% endfor %}</ul>{% endif %}
 </div></section>
-<section class="section section-grise"><div class="conteneur deux-colonnes">
-  <div class="texte-long"><h2 style="margin-bottom:20px">À qui s’adresse le Challenge ?</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
-  <div class="texte-long"><h2 style="margin-bottom:20px">Les organisateurs</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
-</div></section>
-{% if c.faq.size > 0 %}
-<section class="section" id="faq"><div class="conteneur">
-  <h2 style="margin-bottom:28px">Questions fréquentes</h2>
-  <div class="cartes">{% for q in c.faq %}<div class="carte texte-long" style="background:var(--gris-clair)"><strong>{{ q.question }}</strong>{{ q.reponse | markdownify }}</div>{% endfor %}</div>
+
+{% if c.reperes.size > 0 %}
+<section class="section section-menthe" style="padding:48px 0" aria-label="Le Challenge en bref"><div class="conteneur">
+  {% include chiffres.html liste=c.reperes %}
 </div></section>
 {% endif %}
+
+<section class="section" aria-labelledby="histoire"><div class="conteneur lecture">
+  <h2 id="histoire" style="margin-bottom:12px">Notre histoire</h2>
+  <div class="texte-long recit">{% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}</div>
+</div></section>
+
+{% if c.photo != blank %}<img class="bandeau-illustre" src="{{ c.photo }}" alt="" style="max-height:520px;object-fit:cover">{% endif %}
+
+<section class="section section-bleue" aria-labelledby="valeurs"><div class="conteneur lecture">
+  <h2 id="valeurs" style="margin-bottom:20px">Nos valeurs</h2>
+  {% if c.citation != blank %}<blockquote class="citation">{{ c.citation }}</blockquote>{% endif %}
+  <div class="texte-long">{% include texte.html contenu=c.valeurs vide="Valeurs à ajouter." %}</div>
+</div></section>
+
+<section class="section section-grise"><div class="conteneur deux-colonnes">
+  <div class="carte-bloc texte-long"><h2 style="margin-bottom:20px">Pour qui ?</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
+  <div class="carte-bloc texte-long"><h2 style="margin-bottom:20px">Les organisateurs</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
+</div></section>
+
+{% if c.faq.size > 0 %}
+<section class="section" id="faq" aria-labelledby="titre-faq"><div class="conteneur lecture">
+  <h2 id="titre-faq" style="margin-bottom:28px">Questions fréquentes</h2>
+  <div class="faq">{% for q in c.faq %}<details><summary>{{ q.question }}</summary><div class="texte-long">{{ q.reponse | markdownify }}</div></details>{% endfor %}</div>
+</div></section>
+{% endif %}
+
+<section class="section section-bleue centre"><div class="conteneur">
+  <h2 style="margin-bottom:24px">Envie de nous rejoindre ?</h2>
+  <div class="actions" style="justify-content:center">
+    <a class="bouton bouton-menthe" href="{{ insc }}">Inscrire une équipe</a>
+    <a class="bouton bouton-contour" href="/partenaires.html#devenir-partenaire">Devenir partenaire</a>
+  </div>
+</div></section>
