@@ -12,26 +12,26 @@ content:
     path: _data/general.yml
     format: yaml
     fields:
-      - { name: nom, label: Nom de l’événement, type: string }
-      - { name: accroche, label: Phrase d’accroche (page d’accueil), type: text }
-      - { name: logo, label: Logo, type: image }
-      - { name: photo_bandeau, label: Grande photo de la page d’accueil, type: image, description: "Photo horizontale, en bonne définition, avec autorisation de diffusion." }
+      - { name: nom, label: "Nom de l’événement", type: string }
+      - { name: accroche, label: "Phrase d’accroche (page d’accueil)", type: text }
+      - { name: logo, label: "Logo", type: image }
+      - { name: photo_bandeau, label: "Grande photo de la page d’accueil", type: image, description: "Photo horizontale, en bonne définition, avec autorisation de diffusion." }
       - name: contacts
         label: Contacts
         type: object
         list: { collapsible: { collapsed: true, summary: "{sujet}" } }
         fields:
-          - { name: sujet, label: Sujet (ex. Questions sur le tournoi), type: string }
-          - { name: nom, label: Nom, type: string }
-          - { name: telephone, label: Téléphone, type: string }
-          - { name: email, label: Mail, type: string }
+          - { name: sujet, label: "Sujet (ex. Questions sur le tournoi)", type: string }
+          - { name: nom, label: "Nom", type: string }
+          - { name: telephone, label: "Téléphone", type: string }
+          - { name: email, label: "Mail", type: string }
       - name: reseaux
         label: Réseaux sociaux
         type: object
         list: true
         fields:
-          - { name: nom, label: Nom (ex. Instagram), type: string }
-          - { name: lien, label: Lien, type: string }
+          - { name: nom, label: "Nom (ex. Instagram)", type: string }
+          - { name: lien, label: "Lien", type: string }
 
   - name: prochaine
     label: Prochaine édition
@@ -39,38 +39,38 @@ content:
     path: _data/prochaine.yml
     format: yaml
     fields:
-      - { name: annee, label: Année, type: number }
-      - { name: dates, label: Dates (en toutes lettres), type: string, description: "Exemple : 12 et 13 juin 2027" }
-      - { name: lieu, label: Lieu, type: string }
+      - { name: annee, label: "Année", type: number }
+      - { name: dates, label: "Dates (en toutes lettres)", type: string, description: "Exemple : 12 et 13 juin 2027" }
+      - { name: lieu, label: "Lieu", type: string }
       - name: date_debut
         label: Début de l’événement (compte à rebours)
         type: string
         description: "Format AAAA-MM-JJTHH:MM, exemple 2027-06-12T09:00. Laisser vide pour masquer le compte à rebours."
         pattern: { regex: "^$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}$", message: "Format attendu : 2027-06-12T09:00" }
-      - { name: lien_inscription, label: Lien du formulaire d’inscription, type: string, description: "Laisser vide tant que les inscriptions ne sont pas ouvertes." }
-      - { name: reglement, label: Règlement (PDF), type: file }
+      - { name: lien_inscription, label: "Lien du formulaire d’inscription", type: string, description: "Laisser vide tant que les inscriptions ne sont pas ouvertes." }
+      - { name: reglement, label: "Règlement (PDF)", type: file }
       - name: programme
         label: Programme
         type: object
         list: { collapsible: { collapsed: true, summary: "{jour}" } }
         fields:
-          - { name: jour, label: Jour (ex. Samedi 12 juin), type: string }
+          - { name: jour, label: "Jour (ex. Samedi 12 juin)", type: string }
           - name: horaires
             label: Créneaux
             type: object
             list: true
             fields:
-              - { name: heure, label: Heure, type: string }
-              - { name: activite, label: Activité, type: string }
+              - { name: heure, label: "Heure", type: string }
+              - { name: activite, label: "Activité", type: string }
       - name: infos
         label: Infos pratiques
         type: object
         fields:
-          - { name: adresse, label: Adresse du lieu, type: text }
+          - { name: adresse, label: "Adresse du lieu", type: text }
           - { name: acces, label: Accès (transports, stationnement, accessibilité), type: text }
-          - { name: repas, label: Repas, type: text }
-          - { name: hebergement, label: Hébergement, type: text }
-          - { name: a_prevoir, label: À prévoir, type: text }
+          - { name: repas, label: "Repas", type: text }
+          - { name: hebergement, label: "Hébergement", type: text }
+          - { name: a_prevoir, label: "À prévoir", type: text }
 
   - name: editions
     label: Éditions passées (archives)
@@ -80,28 +80,28 @@ content:
     filename: "{primary}.md"
     view: { primary: annee, sort: annee, order: desc }
     fields:
-      - { name: annee, label: Année, type: number, required: true }
-      - { name: sous_titre, label: Sous-titre, type: string }
-      - { name: resume, label: Les moments forts, type: text }
-      - { name: palmares, label: Palmarès ou distinctions (facultatif), type: text }
+      - { name: annee, label: "Année", type: number, required: true }
+      - { name: sous_titre, label: "Sous-titre", type: string }
+      - { name: resume, label: "Les moments forts", type: text }
+      - { name: palmares, label: "Palmarès ou distinctions (facultatif)", type: text }
       - name: chiffres
         label: Chiffres clés
         type: object
         list: true
         fields:
-          - { name: valeur, label: Chiffre, type: string }
-          - { name: libelle, label: Libellé, type: string }
-      - { name: photos, label: Photos, type: image, options: { multiple: { max: 200 } }, description: "Uniquement des photos avec autorisation de diffusion. Les 8 premières apparaissent sur l’accueil." }
-      - { name: video, label: Lien YouTube de la vidéo, type: string }
+          - { name: valeur, label: "Chiffre", type: string }
+          - { name: libelle, label: "Libellé", type: string }
+      - { name: photos, label: "Photos", type: image, options: { multiple: { max: 200 } }, description: "Uniquement des photos avec autorisation de diffusion. Les 8 premières apparaissent sur l’accueil." }
+      - { name: video, label: "Lien YouTube de la vidéo", type: string }
       - name: presse
         label: Revue de presse
         type: object
         list: true
         fields:
-          - { name: media, label: Média, type: string }
-          - { name: date, label: Date, type: string }
-          - { name: titre, label: Titre, type: string }
-          - { name: lien, label: Lien, type: string }
+          - { name: media, label: "Média", type: string }
+          - { name: date, label: "Date", type: string }
+          - { name: titre, label: "Titre", type: string }
+          - { name: lien, label: "Lien", type: string }
 
   - name: challenge
     label: Page « Le Challenge »
@@ -109,36 +109,37 @@ content:
     path: _data/challenge.yml
     format: yaml
     fields:
-      - { name: intro, label: Présentation courte, type: text }
-      - { name: valeurs_cles, label: Valeurs en un mot (pastilles), type: string, list: true }
+      - { name: intro, label: "Texte d’introduction (en haut de la page)", type: text }
       - name: reperes
-        label: Repères en chiffres
+        label: Chiffres clés (bande verte sous l’introduction)
         type: object
-        list: true
+        list: { collapsible: { collapsed: true, summary: "{valeur} {libelle}" } }
         fields:
-          - { name: valeur, label: Chiffre ou repère, type: string }
-          - { name: libelle, label: Libellé, type: string }
-      - { name: histoire, label: "Notre histoire (chaque titre commence par ### )", type: text }
-      - name: illustrations_histoire
-        label: Photos des chapitres de l’histoire (dans l’ordre)
-        description: "1re photo = chapitre 1, etc. Laisser une photo vide pour un chapitre sans illustration (le chapitre sur les partenaires affiche alors leurs logos)."
+          - { name: valeur, label: "Chiffre (ex. 25)", type: string }
+          - { name: libelle, label: "Texte sous le chiffre (ex. équipes)", type: string }
+      - name: chapitres
+        label: Notre histoire (un bloc par chapitre)
+        description: "Chaque bloc = un chapitre avec son titre, son texte et sa photo. Glisser les blocs pour changer l’ordre."
         type: object
-        list: true
+        list: { collapsible: { collapsed: true, summary: "{titre}" } }
         fields:
-          - { name: image, label: Photo, type: image }
-          - { name: image2, label: Photo secondaire (facultative), type: image }
-      - { name: citation, label: Phrase mise en avant (valeurs), type: string }
-      - { name: valeurs, label: Nos valeurs, type: text }
-      - { name: public, label: À qui s’adresse le Challenge, type: text }
-      - { name: organisateurs, label: Les organisateurs, type: text }
-      - { name: photo, label: Photo, type: image }
+          - { name: titre, label: "Titre du chapitre", type: string, required: true }
+          - { name: texte, label: "Texte du chapitre", type: text, description: "Laisser une ligne vide entre deux paragraphes. Pour mettre en gras : **texte**." }
+          - { name: photo, label: "Photo", type: image }
+          - { name: photo2, label: "Deuxième photo (facultative, s’affiche en petit)", type: image }
+          - { name: logos_partenaires, label: "Afficher les logos des partenaires à la place de la photo", type: boolean }
+      - { name: citation, label: "Phrase mise en avant (bloc « Nos valeurs »)", type: string }
+      - { name: valeurs_cles, label: "Valeurs en un mot (avec pictogramme)", type: string, list: true }
+      - { name: valeurs, label: "Texte « Nos valeurs »", type: text }
+      - { name: public, label: "Bloc « Pour qui ? »", type: text }
+      - { name: organisateurs, label: "Bloc « Les organisateurs »", type: text }
       - name: faq
         label: Questions fréquentes
         type: object
-        list: true
+        list: { collapsible: { collapsed: true, summary: "{question}" } }
         fields:
-          - { name: question, label: Question, type: string }
-          - { name: reponse, label: Réponse, type: text }
+          - { name: question, label: "Question", type: string }
+          - { name: reponse, label: "Réponse", type: text }
 
   - name: partenaires
     label: Partenaires
@@ -146,16 +147,16 @@ content:
     path: _data/partenaires.yml
     format: yaml
     fields:
-      - { name: devenir, label: Texte « Devenir partenaire », type: text }
+      - { name: devenir, label: "Texte « Devenir partenaire »", type: text }
       - name: liste
         label: Liste des partenaires
         type: object
         list: { collapsible: { collapsed: true, summary: "{nom}" } }
         fields:
-          - { name: nom, label: Nom, type: string, required: true }
-          - { name: logo, label: Logo, type: image }
-          - { name: lien, label: Site internet, type: string }
-          - { name: categorie, label: Catégorie (titre du groupe sur la page), type: string, description: "Texte libre. Les partenaires qui ont exactement la même catégorie sont regroupés. Exemples : Partenaires financiers et institutionnels, Partenaires de l’animation." }
+          - { name: nom, label: "Nom", type: string, required: true }
+          - { name: logo, label: "Logo", type: image }
+          - { name: lien, label: "Site internet", type: string }
+          - { name: categorie, label: "Catégorie (titre du groupe sur la page)", type: string, description: "Texte libre. Les partenaires qui ont exactement la même catégorie sont regroupés. Exemples : Partenaires financiers et institutionnels, Partenaires de l’animation." }
 
   - name: mentions
     label: Mentions légales
@@ -163,5 +164,5 @@ content:
     path: _data/mentions.yml
     format: yaml
     fields:
-      - { name: editeur, label: Éditeur du site, type: text }
-      - { name: accessibilite, label: Accessibilité, type: text }
+      - { name: editeur, label: "Éditeur du site", type: text }
+      - { name: accessibilite, label: "Accessibilité", type: text }
