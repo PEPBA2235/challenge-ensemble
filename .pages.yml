@@ -129,7 +129,7 @@ content:
           - { name: nom, label: Nom, type: string, required: true }
           - { name: logo, label: Logo, type: image }
           - { name: lien, label: Site internet, type: string }
-          - { name: categorie, label: Catégorie, type: select, options: { values: [Financier, Institutionnel, Associatif, Sportif] } }
+          - { name: categorie, label: Catégorie (titre du groupe sur la page), type: string, description: "Texte libre. Les partenaires qui ont exactement la même catégorie sont regroupés. Exemples : Partenaires financiers et institutionnels, Partenaires de l’animation." }
 
   - name: mentions
     label: Mentions légales
