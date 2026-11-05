@@ -1,6 +1,11 @@
-devenir: TEST
+devenir: ""
 liste:
-  - nom: TEST
-    logo: /images/images.jpg
-    lien: TEST
-    categorie: Associatif
+  - { nom: Caisse d’Épargne, logo: "", lien: "", categorie: Financier et institutionnel }
+  - { nom: Kiwanis Club de Saint-Brieuc Armor, logo: "", lien: "", categorie: Financier et institutionnel }
+  - { nom: PEP Bretill’Armor, logo: "", lien: "", categorie: Financier et institutionnel }
+  - { nom: Conseil départemental des Côtes-d’Armor, logo: "", lien: "", categorie: Financier et institutionnel }
+  - { nom: En Avant Guingamp, logo: "", lien: "", categorie: Financier et institutionnel }
+  - { nom: District de Football des Côtes-d’Armor, logo: "", lien: "", categorie: Animation et sport }
+  - { nom: Ligue de Bretagne de Football, logo: "", lien: "", categorie: Animation et sport }
+  - { nom: Comité Départemental du Sport Adapté (CDSA22), logo: "", lien: "", categorie: Animation et sport }
+  - { nom: "Stéphane Appriou, éducateur sportif à Lanrodec", logo: "", lien: "", categorie: Animation et sport }

@@ -5,7 +5,7 @@ titre: Le Challenge
 {% assign c = site.data.challenge %}
 <section class="bandeau-page"><div class="conteneur"><h1>Le Challenge Ensemble</h1><p>{{ c.intro }}</p></div></section>
 <section class="section"><div class="conteneur deux-colonnes">
-  <div>
+  <div class="texte-long">
     <h2 style="margin-bottom:20px">Notre histoire</h2>
     {% include texte.html contenu=c.histoire vide="Histoire du projet à ajouter." %}
     <h2 style="margin:40px 0 20px">Nos valeurs</h2>
@@ -14,12 +14,12 @@ titre: Le Challenge
   {% if c.photo != blank %}<img src="{{ c.photo }}" alt="" style="width:100%;object-fit:cover">{% else %}<div class="a-remplacer" style="min-height:360px">Photo à ajouter</div>{% endif %}
 </div></section>
 <section class="section section-grise"><div class="conteneur deux-colonnes">
-  <div><h2 style="margin-bottom:20px">À qui s’adresse le Challenge ?</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
-  <div><h2 style="margin-bottom:20px">Les organisateurs</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
+  <div class="texte-long"><h2 style="margin-bottom:20px">À qui s’adresse le Challenge ?</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
+  <div class="texte-long"><h2 style="margin-bottom:20px">Les organisateurs</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
 </div></section>
 {% if c.faq.size > 0 %}
 <section class="section" id="faq"><div class="conteneur">
   <h2 style="margin-bottom:28px">Questions fréquentes</h2>
-  <div class="cartes">{% for q in c.faq %}<div class="carte" style="background:var(--gris-clair)"><strong>{{ q.question }}</strong>{{ q.reponse | markdownify }}</div>{% endfor %}</div>
+  <div class="cartes">{% for q in c.faq %}<div class="carte texte-long" style="background:var(--gris-clair)"><strong>{{ q.question }}</strong>{{ q.reponse | markdownify }}</div>{% endfor %}</div>
 </div></section>
 {% endif %}

@@ -1,6 +1,18 @@
 nom: Challenge Ensemble
-accroche: Deux journées de rencontres, de partage et de compétition autour du
-  sport inclusif.
-logo: /images/images-3.jpg
-photo_bandeau: /images/images.jpg
-email: TEST
+accroche: Deux journées de rencontres, de partage et de compétition autour du sport inclusif.
+logo: /images/logo-challenge-ensemble.png
+photo_bandeau: /images/bandeau-challenge-ensemble.jpg
+contacts:
+  - sujet: Questions sur le tournoi (partie football)
+    nom: Edouard Duchesne
+    telephone: 06 37 88 77 13
+    email: e.duchesne@pepbretillarmor.org
+  - sujet: Hébergement et questions diverses
+    nom: Angélique Tching
+    telephone: 06 63 00 34 72
+    email: a.tching@pepbretillarmor.org
+  - sujet: Inscription et paiement
+    nom: Laura Pibouin
+    telephone: 07 57 68 59 14
+    email: l.pibouin@pepbretillarmor.org
+reseaux: []

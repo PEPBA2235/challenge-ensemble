@@ -18,6 +18,7 @@ titre: Prochaine édition
       <dt>Lieu</dt><dd>{{ p.infos.adresse | default: "À venir" | newline_to_br }}</dd>
       <dt>Accès</dt><dd>{{ p.infos.acces | default: "À venir" | newline_to_br }}</dd>
       <dt>Repas</dt><dd>{{ p.infos.repas | default: "À venir" | newline_to_br }}</dd>
+      <dt>Hébergement</dt><dd>{{ p.infos.hebergement | default: "À venir" | newline_to_br }}</dd>
       <dt>À prévoir</dt><dd>{{ p.infos.a_prevoir | default: "À venir" | newline_to_br }}</dd>
     </dl>
   </div>
@@ -28,7 +29,7 @@ titre: Prochaine édition
   <p>Les inscriptions se font par établissement, via le formulaire en ligne. Merci de lire le règlement avant de vous inscrire.</p>
   <div class="actions" style="margin-top:24px">
     <a class="bouton bouton-menthe" href="{{ p.lien_inscription }}">Ouvrir le formulaire d’inscription</a>
-    {% if p.reglement != blank %}<a class="bouton bouton-contour" href="{{ p.reglement }}">Télécharger le règlement</a>{% endif %}
+    {% capture reg %}{{ p.reglement }}{% endcapture %}{% assign reg = reg | strip %}{% if reg != "" %}<a class="bouton bouton-contour" href="{{ reg }}">Télécharger le règlement</a>{% endif %}
   </div>
   {% else %}
   <p>Les inscriptions ne sont pas encore ouvertes. Revenez bientôt ou écrivez-nous pour être prévenu.</p>

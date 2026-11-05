@@ -1,13 +1,29 @@
 annee: 2027
-dates: 12 juin 2027
-lieu: TEST
-date_debut: 2027-06-12T09:00
-lien_inscription: https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027
+dates: Mardi 1er et mercredi 2 juin 2027
+lieu: Pordic et Binic-Étables-sur-Mer (Côtes-d’Armor)
+date_debut: "2027-06-01T11:00"
+lien_inscription: "https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027"
+reglement: ""
 programme:
-  - jour: Jour 1
-  - jour: Jour 2
+  - jour: Mardi 1er juin, à Pordic
+    horaires:
+      - heure: 11h
+        activite: Lancement du Challenge
+      - heure: ""
+        activite: Ateliers sportifs, éducatifs et ludiques
+      - heure: Soirée
+        activite: Grand repas convivial
+  - jour: Mercredi 2 juin, à Binic-Étables-sur-Mer
+    horaires:
+      - heure: ""
+        activite: Tournoi de football à 5 contre 5
+      - heure: ""
+        activite: Remise des récompenses
 infos:
-  adresse: TEST
-  acces: TEST
-  repas: TEST
-  a_prevoir: TEST
+  adresse: |-
+    Mardi 1er juin : Pordic
+    Mercredi 2 juin : Binic-Étables-sur-Mer
+  acces: ""
+  repas: Grand repas convivial le mardi soir.
+  hebergement: L’organisation ne prend pas en charge l’hébergement, mais peut vous orienter vers les logements les plus proches (camping, hébergement en dur…).
+  a_prevoir: ""

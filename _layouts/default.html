@@ -23,7 +23,7 @@
 <a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="entete">
   <div class="conteneur">
-    <a class="marque" href="/">{% if g.logo != blank %}<img src="{{ g.logo }}" alt="" style="height:52px;width:auto">{% else %}<span class="logo">LOGO</span>{% endif %}{{ g.nom }}</a>
+    <a class="marque" href="/">{% if g.logo != blank %}<img class="logo-img" src="{{ g.logo }}" alt="">{% else %}<span class="logo">LOGO</span>{% endif %}{{ g.nom }}</a>
     <nav class="menu menu-bureau" aria-label="Navigation principale">{{ menu }}</nav>
     <details class="menu-mobile"><summary>Menu</summary><nav class="menu" aria-label="Navigation principale">{{ menu }}</nav></details>
   </div>
@@ -35,7 +35,7 @@
   <div class="conteneur">
     <div>
       <span class="nom">{{ g.nom }}</span>
-      <p>Une question ? {% if g.email != blank %}<a href="mailto:{{ g.email }}">{{ g.email }}</a>{% else %}[adresse de contact]{% endif %}</p>
+      <p>Une question ? <a href="/contact.html">Contactez l’équipe</a></p>
       {% if g.reseaux.size > 0 %}<p>Suivez-nous : {% for r in g.reseaux %}<a href="{{ r.lien }}">{{ r.nom }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>{% endif %}
     </div>
     <nav aria-label="Liens utiles">

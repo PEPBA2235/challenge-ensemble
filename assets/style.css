@@ -133,3 +133,28 @@ p{margin:0 0 1em;max-width:70ch}
 .pied p{color:var(--texte-sur-bleu);margin:0 0 6px}
 .pied nav{display:flex;flex-direction:column}
 .pied nav a{padding:6px 0}
+
+/* Logo et bandeau illustré */
+.marque .logo-img{width:56px;height:56px;border-radius:50%;background:#fff;padding:3px;object-fit:contain}
+.bandeau-illustre{display:block;width:100%;height:auto}
+.hero-infos{background:var(--bleu);color:var(--blanc);padding:40px 0}
+.hero-infos .conteneur{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.hero-infos .sous-titre{font-family:var(--titres);text-transform:uppercase;font-size:clamp(1.3rem,2.6vw,2rem);color:var(--menthe);margin:0}
+.hero-infos .accroche{margin:8px 0 0;font-size:1.15rem}
+.visuellement-cache{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Contacts */
+.contacts{display:flex;flex-wrap:wrap;gap:16px}
+.contact{flex:1 1 280px;background:var(--gris-clair);padding:24px;display:flex;flex-direction:column;gap:6px}
+.contact small{font-weight:700;text-transform:uppercase;font-size:.85rem;color:var(--gris-texte)}
+.contact strong{font-size:1.2rem}
+.contact a{font-weight:700;overflow-wrap:anywhere}
+
+/* Textes longs */
+.texte-long h3{font-size:1.5rem;margin:36px 0 12px}
+.texte-long ul{padding-left:1.2em;margin:0 0 1em}
+.texte-long li{margin-bottom:6px}
+
+/* Partenaire sans logo : nom affiché */
+.logos .logo-nom{background:var(--gris-clair);color:var(--bleu);font-weight:700;text-align:center;text-decoration:none}
+.section-grise .logos .logo-nom{background:var(--blanc)}

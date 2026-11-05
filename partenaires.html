@@ -4,14 +4,14 @@ titre: Partenaires
 ---
 {% assign pa = site.data.partenaires %}
 <section class="bandeau-page"><div class="conteneur"><h1>Nos partenaires</h1><p>Ils rendent le Challenge Ensemble possible.</p></div></section>
-{% assign categories = "Financier|Institutionnel|Associatif|Sportif" | split: "|" %}
+{% assign categories = "Financier et institutionnel|Animation et sport" | split: "|" %}
 {% assign rien = true %}
 {% for cat in categories %}
   {% assign groupe = pa.liste | where: "categorie", cat %}
   {% if groupe.size > 0 %}{% assign rien = false %}
   <section class="section{% cycle '', ' section-grise' %}"><div class="conteneur">
-    <h2 style="margin-bottom:28px">Partenaires {{ cat | downcase }}s</h2>
-    <div class="logos">{% for x in groupe %}{% if x.logo != blank %}<a href="{{ x.lien | default: '#' }}"><img src="{{ x.logo }}" alt="{{ x.nom }}"></a>{% else %}<a href="{{ x.lien | default: '#' }}" class="a-remplacer">{{ x.nom }}</a>{% endif %}{% endfor %}</div>
+    <h2 style="margin-bottom:28px">{% if cat == "Financier et institutionnel" %}Partenaires financiers et institutionnels{% else %}Partenaires de l’animation{% endif %}</h2>
+    <div class="logos">{% for x in groupe %}{% if x.lien != blank %}<a href="{{ x.lien }}" class="{% if x.logo == blank %}logo-nom{% endif %}">{% else %}<span class="{% if x.logo == blank %}logo-nom{% endif %}">{% endif %}{% if x.logo != blank %}<img src="{{ x.logo }}" alt="{{ x.nom }}">{% else %}{{ x.nom }}{% endif %}{% if x.lien != blank %}</a>{% else %}</span>{% endif %}{% endfor %}</div>
   </div></section>
   {% endif %}
 {% endfor %}

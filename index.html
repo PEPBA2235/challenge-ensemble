@@ -3,7 +3,23 @@ layout: default
 ---
 {% assign g = site.data.general %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}{% assign p = site.data.prochaine %}
 {% assign derniere = site.editions | sort: 'annee' | last %}
-<section class="hero"{% if g.photo_bandeau != blank %} style="background-image:url('{{ g.photo_bandeau }}')"{% endif %}>
+{% if g.photo_bandeau != blank %}
+<section aria-labelledby="titre-accueil">
+  <h1 id="titre-accueil" class="visuellement-cache">{{ g.nom }}</h1>
+  <img class="bandeau-illustre" src="{{ g.photo_bandeau }}" alt="Bandeau illustré du {{ g.nom }} : sport, partage, inclusion">
+  <div class="hero-infos"><div class="conteneur">
+    <div>
+      <p class="sous-titre">Édition {{ p.annee }}{% if p.dates != blank %}, {{ p.dates }}{% endif %}</p>
+      <p class="accroche">{% if p.lieu != blank %}{{ p.lieu }}. {% endif %}{{ g.accroche }}</p>
+    </div>
+    <div class="actions">
+      <a class="bouton bouton-menthe" href="{{ insc }}">Inscrire une équipe</a>
+      <a class="bouton bouton-contour" href="/le-challenge.html">Découvrir le Challenge</a>
+    </div>
+  </div></div>
+</section>
+{% else %}
+<section class="hero"{% if g.photo_bandeau != blank %}{% endif %}>
   {% if g.photo_bandeau == blank %}<span class="a-remplacer marque-photo" style="min-height:0;padding:8px 12px">Photo du bandeau à ajouter</span>{% endif %}
   <div class="hero-voile"><div class="conteneur">
     <h1>Challenge<br>Ensemble</h1>
@@ -15,6 +31,7 @@ layout: default
     </div>
   </div></div>
 </section>
+{% endif %}
 
 <section class="section-bleue" style="padding:48px 0"><div class="conteneur tuiles">
   <a class="tuile tuile-menthe" href="{{ insc }}"><strong>Inscription {{ p.annee }}</strong><span>Formulaire et règlement</span></a>
@@ -58,7 +75,7 @@ layout: default
 
 <section class="section" aria-labelledby="partenaires"><div class="conteneur">
   <div class="tete-section"><h2 id="partenaires">Partenaires</h2><a href="/partenaires.html" style="font-weight:700">Tous nos partenaires</a></div>
-  <div class="logos">{% if site.data.partenaires.liste.size > 0 %}{% for pa in site.data.partenaires.liste %}{% if pa.logo != blank %}<a href="{{ pa.lien | default: '#' }}"><img src="{{ pa.logo }}" alt="{{ pa.nom }}"></a>{% else %}<a href="{{ pa.lien | default: '#' }}" class="a-remplacer">{{ pa.nom }}</a>{% endif %}{% endfor %}{% else %}{% for i in (1..5) %}<div class="a-remplacer">Logo partenaire</div>{% endfor %}{% endif %}</div>
+  <div class="logos">{% if site.data.partenaires.liste.size > 0 %}{% for pa in site.data.partenaires.liste %}{% if pa.lien != blank %}<a href="{{ pa.lien }}" class="{% if pa.logo == blank %}logo-nom{% endif %}">{% else %}<span class="{% if pa.logo == blank %}logo-nom{% endif %}">{% endif %}{% if pa.logo != blank %}<img src="{{ pa.logo }}" alt="{{ pa.nom }}">{% else %}{{ pa.nom }}{% endif %}{% if pa.lien != blank %}</a>{% else %}</span>{% endif %}{% endfor %}{% else %}{% for i in (1..5) %}<div class="a-remplacer">Logo partenaire</div>{% endfor %}{% endif %}</div>
 </div></section>
 
 {% if derniere %}
