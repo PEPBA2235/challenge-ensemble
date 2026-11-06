@@ -3,7 +3,7 @@
 media:
   input: images
   output: /images
-  categories: [image, document, video]
+  categories: [image, document, video, audio]
   rename: safe
 
 content:
@@ -200,6 +200,18 @@ content:
       - { name: photos, label: "Photos", type: image, options: { multiple: { max: 200 } }, description: "Uniquement des photos avec autorisation de diffusion. Les 8 premières apparaissent sur l’accueil." }
       - { name: video, label: "Vidéo : lien YouTube ou Vimeo (facultatif)", type: string, description: "Si vous n’avez pas de lien, laissez vide : le bloc vidéo disparaît du site." }
       - { name: video_fichier, label: "Vidéo : ou fichier vidéo à déposer (facultatif)", type: file, description: "Format MP4, 25 Mo maximum. Utilisé seulement s’il n’y a pas de lien ci-dessus." }
+      - name: audios
+        label: "Radio et podcasts"
+        description: "Laisser vide si aucun passage radio : le bloc n’apparaît pas."
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{media}" } }
+        fields:
+          - { name: media, label: "Radio ou émission (ex. COB’FM, Au Cœur du Sport)", type: string }
+          - { name: date, label: "Date de diffusion", type: string }
+          - { name: titre, label: "Titre", type: string }
+          - { name: lien, label: "Lien vers la page de l’émission", type: string }
+          - { name: mp3, label: "Lien direct vers le fichier audio (.mp3), facultatif", type: string, description: "Affiche un lecteur sur le site. Uniquement avec l’accord de la radio." }
+          - { name: fichier, label: "Ou fichier audio à déposer (facultatif)", type: file, description: "MP3, 25 Mo maximum, avec l’accord de la radio." }
       - name: presse
         label: "Revue de presse"
         type: object
