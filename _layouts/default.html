@@ -29,12 +29,12 @@
 <body>
 {% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}
 {% capture menu %}
-<a href="/le-challenge.html"{% if page.url == '/le-challenge.html' %} aria-current="page"{% endif %}>Le Challenge</a>
-<a href="/prochaine-edition.html"{% if page.url == '/prochaine-edition.html' %} aria-current="page"{% endif %}>Édition {{ site.data.prochaine.annee }}</a>
-<a href="/archives.html"{% if page.url == '/archives.html' or page.collection == 'editions' %} aria-current="page"{% endif %}>Archives</a>
-<a href="/partenaires.html"{% if page.url == '/partenaires.html' %} aria-current="page"{% endif %}>Partenaires</a>
-<a href="/contact.html"{% if page.url == '/contact.html' %} aria-current="page"{% endif %}>Contact</a>
-<a class="bouton bouton-menthe" href="{{ insc }}">S’inscrire</a>
+<a href="/le-challenge.html"{% if page.url == '/le-challenge.html' %} aria-current="page"{% endif %}>{{ g.menu_challenge | default: "Le Challenge" }}</a>
+<a href="/prochaine-edition.html"{% if page.url == '/prochaine-edition.html' %} aria-current="page"{% endif %}>{{ g.menu_edition | default: "Édition [annee]" | replace: "[annee]", site.data.prochaine.annee }}</a>
+<a href="/archives.html"{% if page.url == '/archives.html' or page.collection == 'editions' %} aria-current="page"{% endif %}>{{ g.menu_archives | default: "Archives" }}</a>
+<a href="/partenaires.html"{% if page.url == '/partenaires.html' %} aria-current="page"{% endif %}>{{ g.menu_partenaires | default: "Partenaires" }}</a>
+<a href="/contact.html"{% if page.url == '/contact.html' %} aria-current="page"{% endif %}>{{ g.menu_contact | default: "Contact" }}</a>
+<a class="bouton bouton-menthe" href="{{ insc }}">{{ g.menu_inscription | default: "S’inscrire" }}</a>
 {% endcapture %}
 <a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="entete">
@@ -51,8 +51,8 @@
   <div class="conteneur">
     <div>
       <span class="nom">{{ g.nom }}</span>
-      <p>Une question ? <a href="/contact.html">Contactez l’équipe</a></p>
-      {% assign reseaux = site.data.contact.reseaux | default: g.reseaux %}{% if reseaux.size > 0 %}<p>Suivez-nous : {% for r in reseaux %}<a href="{{ r.lien }}">{{ r.nom }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>{% endif %}
+      <p>{{ g.pied_question | default: "Une question ?" }} <a href="/contact.html">{{ g.pied_lien_contact | default: "Contactez l’équipe" }}</a></p>
+      {% assign reseaux = site.data.contact.reseaux | default: g.reseaux %}{% if reseaux.size > 0 %}<p>{{ g.pied_reseaux | default: "Suivez-nous :" }} {% for r in reseaux %}<a href="{{ r.lien }}">{{ r.nom }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>{% endif %}
     </div>
     <nav aria-label="Liens utiles">
       <a href="/mentions-legales.html">Mentions légales</a>

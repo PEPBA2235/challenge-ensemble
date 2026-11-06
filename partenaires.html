@@ -4,7 +4,7 @@ description: "Les partenaires financiers, institutionnels et sportifs du Challen
 titre: Partenaires
 ---
 {% assign pa = site.data.partenaires %}
-<section class="bandeau-page"><div class="conteneur"><h1>{{ pa.titre_page | default: "Nos partenaires" }}</h1><p>{{ pa.sous_titre | default: "Ils rendent le Challenge Ensemble possible." }}</p></div></section>
+<section class="bandeau-page"><div class="conteneur"><h1>{{ pa.titre_page | default: "Nos partenaires" }}</h1><p>{{ pa.sous_titre | markdownify | remove: "<p>" | remove: "</p>" | strip | default: "Ils rendent le Challenge Ensemble possible." }}</p></div></section>
 {% assign groupes = pa.liste | group_by: "categorie" %}
 {% assign rien = true %}
 {% for gr in groupes %}{% assign rien = false %}

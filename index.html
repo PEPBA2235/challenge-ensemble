@@ -12,8 +12,8 @@ layout: default
   <div class="hero-infos"><div class="conteneur">
     <div>
       <p class="sous-titre">Édition {{ p.annee }}{% if p.dates != blank %}, {{ p.dates }}{% endif %}</p>
-      <p class="accroche">{% if p.lieu != blank %}{{ p.lieu }}. {% endif %}{{ a.accroche | default: g.accroche }}</p>
-      <p class="accroche" style="font-size:1rem;opacity:.9">{{ a.organise_par | default: g.organise_par | default: "Organisé par le DITEP22 (PEP Bretill’Armor) et le Pordic-Binic Football Club." }}</p>
+      <p class="accroche">{% if p.lieu != blank %}{{ p.lieu }}. {% endif %}{{ a.accroche | default: g.accroche | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
+      <p class="accroche" style="font-size:1rem;opacity:.9">{{ a.organise_par | default: g.organise_par | default: "Organisé par le DITEP22 (PEP Bretill’Armor) et le Pordic-Binic Football Club." | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
     </div>
     <div class="actions">
       <a class="bouton bouton-menthe" href="{{ insc }}">{{ a.bouton_inscription | default: "Inscrire une équipe" }}</a>
@@ -34,9 +34,9 @@ layout: default
 {% endif %}
 
 <section class="section-bleue" style="padding:48px 0"><div class="conteneur tuiles">
-  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>{{ a.tuile1_titre | default: "Inscription [annee]" | replace: "[annee]", p.annee }}</strong><span>{{ a.tuile1_texte | default: "Formulaire et règlement" }}</span></a>
-  <a class="tuile" href="/prochaine-edition.html"><strong>{{ a.tuile2_titre | default: "Prochaine édition" }}</strong><span>{{ a.tuile2_texte | default: "Dates, lieu, programme" }}</span></a>
-  <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>{{ a.tuile3_titre | default: "Devenir partenaire" }}</strong><span>{{ a.tuile3_texte | default: "Pourquoi nous soutenir" }}</span></a>
+  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>{{ a.tuile1_titre | default: "Inscription [annee]" | replace: "[annee]", p.annee }}</strong><span>{{ a.tuile1_texte | default: "Formulaire et règlement" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
+  <a class="tuile" href="/prochaine-edition.html"><strong>{{ a.tuile2_titre | default: "Prochaine édition" }}</strong><span>{{ a.tuile2_texte | default: "Dates, lieu, programme" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
+  <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>{{ a.tuile3_titre | default: "Devenir partenaire" }}</strong><span>{{ a.tuile3_texte | default: "Pourquoi nous soutenir" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
 </div></section>
 
 {% if derniere %}
@@ -50,10 +50,10 @@ layout: default
 <section class="section section-bleue centre" aria-labelledby="titre-rebours"><div class="conteneur">
   <h2 id="titre-rebours">{{ a.titre_rebours | default: "Prochaine édition dans" }}</h2>
   <div class="rebours" id="rebours" data-date="{{ p.date_debut }}">
-    <div><b>00</b><span>Jours</span></div>
-    <div><b>00</b><span>Heures</span></div>
-    <div><b>00</b><span>Minutes</span></div>
-    <div><b>00</b><span>Secondes</span></div>
+    <div><b>00</b><span>{{ a.rebours_jours | default: "Jours" }}</span></div>
+    <div><b>00</b><span>{{ a.rebours_heures | default: "Heures" }}</span></div>
+    <div><b>00</b><span>{{ a.rebours_minutes | default: "Minutes" }}</span></div>
+    <div><b>00</b><span>{{ a.rebours_secondes | default: "Secondes" }}</span></div>
   </div>
 </div></section>
 {% endif %}
