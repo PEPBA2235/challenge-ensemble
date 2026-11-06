@@ -19,15 +19,15 @@ content:
       - { name: organise_par, label: "Phrase « Organisé par… »", type: string }
       - { name: bouton_inscription, label: "Bouton vert (mène à HelloAsso)", type: string }
       - { name: bouton_decouvrir, label: "Bouton blanc (mène à la page Le Challenge)", type: string }
-      - { name: tuile1_titre, label: "Tuile verte : titre", type: string, description: "{annee} est remplacé automatiquement par l’année de la prochaine édition." }
+      - { name: tuile1_titre, label: "Tuile verte : titre", type: string, description: "[annee] est remplacé automatiquement par l’année de la prochaine édition." }
       - { name: tuile1_texte, label: "Tuile verte : petit texte", type: string }
       - { name: tuile2_titre, label: "Tuile bleue du milieu : titre", type: string }
       - { name: tuile2_texte, label: "Tuile bleue du milieu : petit texte", type: string }
       - { name: tuile3_titre, label: "Tuile bleue de droite : titre", type: string }
       - { name: tuile3_texte, label: "Tuile bleue de droite : petit texte", type: string }
-      - { name: titre_chiffres, label: "Titre de la bande des chiffres", type: string, description: "{annee} = année de la dernière édition. Les chiffres se modifient dans « 4. Archives » › l’édition concernée." }
+      - { name: titre_chiffres, label: "Titre de la bande des chiffres", type: string, description: "[annee] = année de la dernière édition. Les chiffres se modifient dans « 4. Archives » › l’édition concernée." }
       - { name: titre_rebours, label: "Titre du compte à rebours", type: string }
-      - { name: titre_galerie, label: "Titre de la galerie photos", type: string, description: "{annee} = année de la dernière édition. Les photos se modifient dans « 4. Archives »." }
+      - { name: titre_galerie, label: "Titre de la galerie photos", type: string, description: "[annee] = année de la dernière édition. Les photos se modifient dans « 4. Archives »." }
       - { name: bouton_galerie, label: "Bouton sous la galerie", type: string }
       - { name: titre_video, label: "Titre de la vidéo", type: string }
       - { name: titre_partenaires, label: "Titre de la bande des partenaires", type: string, description: "Les logos se modifient dans « 5. Partenaires »." }
@@ -109,7 +109,7 @@ content:
     path: _data/prochaine.yml
     format: yaml
     fields:
-      - { name: titre_page, label: "Grand titre en haut de page", type: string, description: "{annee} est remplacé automatiquement par l’année ci-dessous." }
+      - { name: titre_page, label: "Grand titre en haut de page", type: string, description: "[annee] est remplacé automatiquement par l’année ci-dessous." }
       - { name: annee, label: "Année", type: number }
       - { name: dates, label: "Dates (en toutes lettres)", type: string, description: "Exemple : Mardi 1er et mercredi 2 juin 2027" }
       - { name: lieu, label: "Lieu", type: string }
