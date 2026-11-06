@@ -1,0 +1,9 @@
+{% comment %} Passages radio / podcasts. Rien ne s’affiche si la liste est vide. {% endcomment %}
+<div class="audios">{% for a in include.liste limit: include.limite %}{% capture src %}{{ a.fichier | default: a.mp3 }}{% endcapture %}{% assign src = src | strip %}
+  <div class="audio-carte">
+    <small>{{ a.media }}{% if a.date != blank %}, {{ a.date }}{% endif %}</small>
+    <strong>{{ a.titre }}</strong>
+    {% if src != "" %}<audio controls preload="none" src="{{ src }}"></audio>{% endif %}
+    {% if a.lien != blank %}<a href="{{ a.lien }}">Écouter sur le site de {{ a.media | default: "l’émission" }}</a>{% endif %}
+  </div>{% endfor %}
+</div>

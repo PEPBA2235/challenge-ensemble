@@ -24,6 +24,12 @@ layout: default
   {% include video.html url=e.video fichier=e.video_fichier titre=t %}
 </div></section>
 {% endif %}
+{% if e.audios.size > 0 %}
+<section class="section section-grise"><div class="conteneur">
+  <h2 style="margin-bottom:28px">À écouter</h2>
+  {% include audios.html liste=e.audios limite=20 %}
+</div></section>
+{% endif %}
 <section class="section"><div class="conteneur">
   <h2 style="margin-bottom:28px">Revue de presse</h2>
   {% include presse.html liste=e.presse limite=50 fond=true %}

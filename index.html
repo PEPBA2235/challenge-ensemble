@@ -81,10 +81,11 @@ layout: default
   <div class="logos">{% for pa in site.data.partenaires.liste %}{% if pa.lien != blank %}<a href="{{ pa.lien }}" class="{% if pa.logo == blank %}logo-nom{% endif %}">{% else %}<span class="{% if pa.logo == blank %}logo-nom{% endif %}">{% endif %}{% if pa.logo != blank %}<img src="{{ pa.logo }}" alt="{{ pa.nom }}">{% else %}{{ pa.nom }}{% endif %}{% if pa.lien != blank %}</a>{% else %}</span>{% endif %}{% endfor %}</div>
 </div></section>
 
-{% if derniere and derniere.presse.size > 0 %}
+{% if derniere and derniere.presse.size > 0 or derniere and derniere.audios.size > 0 %}
 <section class="section section-grise" aria-labelledby="presse"><div class="conteneur">
   <h2 id="presse" style="margin-bottom:28px">{{ a.titre_presse | default: "Ils en parlent" }}</h2>
-  {% include presse.html liste=derniere.presse limite=3 %}
+  {% if derniere.presse.size > 0 %}{% include presse.html liste=derniere.presse limite=3 %}{% endif %}
+  {% if derniere.audios.size > 0 %}<div style="margin-top:16px">{% include audios.html liste=derniere.audios limite=2 %}</div>{% endif %}
 </div></section>
 {% endif %}
 

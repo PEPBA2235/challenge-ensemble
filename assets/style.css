@@ -278,3 +278,12 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 /* Mise en valeur choisie dans l’éditeur (gras ou souligné) */
 .texte-long strong,.texte-long u{font-weight:700;text-decoration:none;background:linear-gradient(transparent 58%,rgba(46,230,166,.55) 58%)}
 .section-bleue .texte-long strong,.section-bleue .texte-long u,.pc-valeurs .texte-long strong,.pc-valeurs .texte-long u,.pc-intro strong,.pc-intro u,.bandeau-page strong{background:none;color:var(--menthe)}
+
+/* Passages radio */
+.audios{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.audio-carte{background:var(--blanc);border-left:6px solid var(--menthe);padding:22px;display:flex;flex-direction:column;gap:10px}
+.audio-carte small{font-weight:700;color:var(--gris-texte);text-transform:uppercase;font-size:.85rem}
+.audio-carte strong{font-size:1.15rem}
+.audio-carte audio{width:100%}
+.audio-carte a{font-weight:700}
+.section-grise .audio-carte,.section .audio-carte{box-shadow:0 2px 0 #E5E7EB}
