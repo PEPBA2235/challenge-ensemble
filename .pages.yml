@@ -1,4 +1,5 @@
-# Configuration de l'interface d'édition Pages CMS (https://app.pagescms.org)
+# Interface d'édition Pages CMS (https://app.pagescms.org)
+# Une entrée par page du site, dans l'ordre du menu. Les champs suivent l'ordre de la page, de haut en bas.
 media:
   input: images
   output: /images
@@ -6,74 +7,168 @@ media:
   rename: safe
 
 content:
-  - name: general
-    label: Informations générales
+  # ---------------------------------------------------------------- ACCUEIL
+  - name: accueil
+    label: "1. Page d’accueil"
     type: file
-    path: _data/general.yml
+    path: _data/accueil.yml
     format: yaml
     fields:
-      - { name: nom, label: "Nom de l’événement", type: string }
-      - { name: accroche, label: "Phrase d’accroche (page d’accueil)", type: text }
-      - { name: logo, label: "Logo", type: image }
-      - { name: photo_bandeau, label: "Grande photo de la page d’accueil", type: image, description: "Photo horizontale, en bonne définition, avec autorisation de diffusion." }
-      - name: contacts
-        label: Contacts
-        type: object
-        list: { collapsible: { collapsed: true, summary: "{sujet}" } }
-        fields:
-          - { name: sujet, label: "Sujet (ex. Questions sur le tournoi)", type: string }
-          - { name: nom, label: "Nom", type: string }
-          - { name: telephone, label: "Téléphone", type: string }
-          - { name: email, label: "Mail", type: string }
-      - name: reseaux
-        label: Réseaux sociaux
-        type: object
-        list: true
-        fields:
-          - { name: nom, label: "Nom (ex. Instagram)", type: string }
-          - { name: lien, label: "Lien", type: string }
+      - { name: photo_bandeau, label: "Grand bandeau en haut de page", type: image, description: "Image large et horizontale (format paysage)." }
+      - { name: accroche, label: "Phrase d’accroche (sous les dates)", type: string }
+      - { name: organise_par, label: "Phrase « Organisé par… »", type: string }
+      - { name: bouton_inscription, label: "Bouton vert (mène à HelloAsso)", type: string }
+      - { name: bouton_decouvrir, label: "Bouton blanc (mène à la page Le Challenge)", type: string }
+      - { name: tuile1_titre, label: "Tuile verte : titre", type: string, description: "{annee} est remplacé automatiquement par l’année de la prochaine édition." }
+      - { name: tuile1_texte, label: "Tuile verte : petit texte", type: string }
+      - { name: tuile2_titre, label: "Tuile bleue du milieu : titre", type: string }
+      - { name: tuile2_texte, label: "Tuile bleue du milieu : petit texte", type: string }
+      - { name: tuile3_titre, label: "Tuile bleue de droite : titre", type: string }
+      - { name: tuile3_texte, label: "Tuile bleue de droite : petit texte", type: string }
+      - { name: titre_chiffres, label: "Titre de la bande des chiffres", type: string, description: "{annee} = année de la dernière édition. Les chiffres se modifient dans « 4. Archives » › l’édition concernée." }
+      - { name: titre_rebours, label: "Titre du compte à rebours", type: string }
+      - { name: titre_galerie, label: "Titre de la galerie photos", type: string, description: "{annee} = année de la dernière édition. Les photos se modifient dans « 4. Archives »." }
+      - { name: bouton_galerie, label: "Bouton sous la galerie", type: string }
+      - { name: titre_video, label: "Titre de la vidéo", type: string }
+      - { name: titre_partenaires, label: "Titre de la bande des partenaires", type: string, description: "Les logos se modifient dans « 5. Partenaires »." }
+      - { name: lien_partenaires, label: "Lien vers la page Partenaires", type: string }
+      - { name: titre_presse, label: "Titre de la revue de presse", type: string }
 
+  # ---------------------------------------------------------------- LE CHALLENGE
+  - name: challenge
+    label: "2. Page « Le Challenge »"
+    type: file
+    path: _data/challenge.yml
+    format: yaml
+    fields:
+      - { name: titre, label: "Grand titre en haut de page", type: string }
+      - { name: sur_titre, label: "Petite ligne verte sous le titre", type: string }
+      - name: intro
+        label: "Texte d’introduction (en haut, sur fond bleu)"
+        type: rich-text
+        options: { switcher: false, media: false }
+      - { name: bouton_histoire, label: "Bouton en haut de page", type: string }
+      - name: reperes
+        label: "Chiffres clés (bande verte)"
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{valeur} {libelle}" } }
+        fields:
+          - { name: valeur, label: "Chiffre (ex. 25)", type: string }
+          - { name: libelle, label: "Texte sous le chiffre (ex. équipes)", type: string }
+      - name: chapitres
+        label: "Notre histoire (un bloc par chapitre)"
+        description: "Glisser les blocs pour changer l’ordre. Pour mettre un passage en valeur (surligné en vert), le sélectionner puis cliquer sur B (gras) ou U (souligné)."
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{titre}" } }
+        fields:
+          - { name: titre, label: "Titre du chapitre", type: string, required: true }
+          - name: texte
+            label: "Texte du chapitre"
+            type: rich-text
+            options: { switcher: false, media: false }
+          - { name: photo, label: "Photo", type: image }
+          - { name: photo2, label: "Deuxième photo (facultative, s’affiche en petit)", type: image }
+          - { name: logos_partenaires, label: "Afficher les logos des partenaires à la place de la photo", type: boolean }
+      - { name: titre_valeurs, label: "Bloc bleu « Valeurs » : titre", type: string }
+      - { name: citation, label: "Bloc bleu « Valeurs » : phrase en vert", type: string }
+      - { name: valeurs_cles, label: "Bloc bleu « Valeurs » : valeurs avec pictogramme", type: string, list: true }
+      - name: valeurs
+        label: "Bloc bleu « Valeurs » : texte"
+        type: rich-text
+        options: { switcher: false, media: false }
+      - { name: titre_public, label: "Bloc vert clair : titre", type: string }
+      - name: public
+        label: "Bloc vert clair : texte"
+        description: "Les passages en gras ou soulignés sont surlignés en vert sur le site."
+        type: rich-text
+        options: { switcher: false, media: false }
+      - { name: titre_organisateurs, label: "Bloc bleu clair : titre", type: string }
+      - name: organisateurs
+        label: "Bloc bleu clair : texte"
+        type: rich-text
+        options: { switcher: false, media: false }
+      - { name: titre_faq, label: "Questions fréquentes : titre", type: string }
+      - name: faq
+        label: "Questions fréquentes"
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{question}" } }
+        fields:
+          - { name: question, label: "Question", type: string }
+          - name: reponse
+            label: "Réponse"
+            type: rich-text
+            options: { switcher: false, media: false }
+      - { name: titre_appel, label: "Bande verte en bas : titre", type: string }
+      - { name: bouton_appel_inscription, label: "Bande verte en bas : bouton bleu", type: string }
+      - { name: bouton_appel_partenaire, label: "Bande verte en bas : bouton blanc", type: string }
+
+  # ---------------------------------------------------------------- PROCHAINE ÉDITION
   - name: prochaine
-    label: Prochaine édition
+    label: "3. Page « Édition » (prochaine édition)"
     type: file
     path: _data/prochaine.yml
     format: yaml
     fields:
+      - { name: titre_page, label: "Grand titre en haut de page", type: string, description: "{annee} est remplacé automatiquement par l’année ci-dessous." }
       - { name: annee, label: "Année", type: number }
-      - { name: dates, label: "Dates (en toutes lettres)", type: string, description: "Exemple : 12 et 13 juin 2027" }
+      - { name: dates, label: "Dates (en toutes lettres)", type: string, description: "Exemple : Mardi 1er et mercredi 2 juin 2027" }
       - { name: lieu, label: "Lieu", type: string }
       - name: date_debut
-        label: Début de l’événement (compte à rebours)
+        label: "Début de l’événement (compte à rebours de l’accueil)"
         type: string
-        description: "Format AAAA-MM-JJTHH:MM, exemple 2027-06-12T09:00. Laisser vide pour masquer le compte à rebours."
-        pattern: { regex: "^$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}$", message: "Format attendu : 2027-06-12T09:00" }
-      - { name: lien_inscription, label: "Lien du formulaire d’inscription", type: string, description: "Laisser vide tant que les inscriptions ne sont pas ouvertes." }
-      - { name: reglement, label: "Règlement (PDF)", type: file }
+        description: "Format AAAA-MM-JJTHH:MM, exemple 2027-06-01T11:00. Laisser vide pour masquer le compte à rebours."
+        pattern: { regex: "^$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}$", message: "Format attendu : 2027-06-01T11:00" }
+      - { name: date_fin, label: "Date de fin (pour Google, format AAAA-MM-JJ)", type: string }
+      - { name: titre_programme, label: "Colonne de gauche : titre", type: string }
       - name: programme
-        label: Programme
+        label: "Programme"
         type: object
         list: { collapsible: { collapsed: true, summary: "{jour}" } }
         fields:
-          - { name: jour, label: "Jour (ex. Samedi 12 juin)", type: string }
+          - { name: jour, label: "Jour (ex. Mardi 1er juin, à Pordic)", type: string }
           - name: horaires
-            label: Créneaux
+            label: "Créneaux"
             type: object
             list: true
             fields:
-              - { name: heure, label: "Heure", type: string }
+              - { name: heure, label: "Heure (facultatif)", type: string }
               - { name: activite, label: "Activité", type: string }
+      - { name: titre_infos, label: "Colonne de droite : titre", type: string }
       - name: infos
-        label: Infos pratiques
+        label: "Infos pratiques"
         type: object
         fields:
-          - { name: adresse, label: "Adresse du lieu", type: text }
-          - { name: acces, label: Accès (transports, stationnement, accessibilité), type: text }
-          - { name: repas, label: "Repas", type: text }
-          - { name: hebergement, label: "Hébergement", type: text }
-          - { name: a_prevoir, label: "À prévoir", type: text }
+          - { name: adresse, label: "Lieu", type: rich-text, options: { switcher: false, media: false } }
+          - { name: acces, label: "Accès (transports, stationnement, accessibilité)", type: rich-text, options: { switcher: false, media: false } }
+          - { name: repas, label: "Repas", type: rich-text, options: { switcher: false, media: false } }
+          - { name: hebergement, label: "Hébergement", type: rich-text, options: { switcher: false, media: false } }
+          - { name: a_prevoir, label: "À prévoir", type: rich-text, options: { switcher: false, media: false } }
+      - { name: titre_inscription, label: "Bande bleue en bas : titre", type: string }
+      - { name: lien_inscription, label: "Lien HelloAsso (inscription et paiement)", type: string, description: "Utilisé par tous les boutons « S’inscrire » du site. Laisser vide tant que les inscriptions ne sont pas ouvertes." }
+      - name: texte_inscription
+        label: "Bande bleue : texte quand les inscriptions sont ouvertes"
+        type: rich-text
+        options: { switcher: false, media: false }
+      - name: texte_inscription_fermee
+        label: "Bande bleue : texte quand les inscriptions sont fermées"
+        type: rich-text
+        options: { switcher: false, media: false }
+      - { name: bouton_inscription, label: "Bande bleue : bouton d’inscription", type: string }
+      - { name: reglement, label: "Règlement (PDF)", type: file }
+      - { name: bouton_reglement, label: "Bande bleue : bouton du règlement", type: string }
+
+  # ---------------------------------------------------------------- ARCHIVES
+  - name: archives
+    label: "4. Page « Archives » (titre)"
+    type: file
+    path: _data/archives.yml
+    format: yaml
+    fields:
+      - { name: titre_page, label: "Grand titre en haut de page", type: string }
+      - { name: sous_titre, label: "Phrase sous le titre", type: string }
 
   - name: editions
-    label: Éditions passées (archives)
+    label: "4. Archives : une fiche par édition passée"
     type: collection
     path: _editions
     format: yaml-frontmatter
@@ -81,88 +176,104 @@ content:
     view: { primary: annee, sort: annee, order: desc }
     fields:
       - { name: annee, label: "Année", type: number, required: true }
-      - { name: sous_titre, label: "Sous-titre", type: string }
-      - { name: resume, label: "Les moments forts", type: text }
-      - { name: palmares, label: "Palmarès ou distinctions (facultatif)", type: text }
+      - { name: sous_titre, label: "Phrase sous le titre", type: string }
       - name: chiffres
-        label: Chiffres clés
+        label: "Chiffres clés (aussi affichés sur l’accueil pour la dernière édition)"
         type: object
-        list: true
+        list: { collapsible: { collapsed: true, summary: "{valeur} {libelle}" } }
         fields:
           - { name: valeur, label: "Chiffre", type: string }
           - { name: libelle, label: "Libellé", type: string }
+      - name: resume
+        label: "Les moments forts"
+        type: rich-text
+        options: { switcher: false, media: false }
+      - name: palmares
+        label: "Palmarès ou distinctions (facultatif)"
+        type: rich-text
+        options: { switcher: false, media: false }
       - { name: photos, label: "Photos", type: image, options: { multiple: { max: 200 } }, description: "Uniquement des photos avec autorisation de diffusion. Les 8 premières apparaissent sur l’accueil." }
       - { name: video, label: "Lien YouTube de la vidéo", type: string }
       - name: presse
-        label: Revue de presse
+        label: "Revue de presse"
         type: object
-        list: true
+        list: { collapsible: { collapsed: true, summary: "{media}" } }
         fields:
           - { name: media, label: "Média", type: string }
           - { name: date, label: "Date", type: string }
           - { name: titre, label: "Titre", type: string }
           - { name: lien, label: "Lien", type: string }
 
-  - name: challenge
-    label: Page « Le Challenge »
-    type: file
-    path: _data/challenge.yml
-    format: yaml
-    fields:
-      - { name: intro, label: "Texte d’introduction (en haut de la page)", type: text }
-      - name: reperes
-        label: Chiffres clés (bande verte sous l’introduction)
-        type: object
-        list: { collapsible: { collapsed: true, summary: "{valeur} {libelle}" } }
-        fields:
-          - { name: valeur, label: "Chiffre (ex. 25)", type: string }
-          - { name: libelle, label: "Texte sous le chiffre (ex. équipes)", type: string }
-      - name: chapitres
-        label: Notre histoire (un bloc par chapitre)
-        description: "Chaque bloc = un chapitre avec son titre, son texte et sa photo. Glisser les blocs pour changer l’ordre."
-        type: object
-        list: { collapsible: { collapsed: true, summary: "{titre}" } }
-        fields:
-          - { name: titre, label: "Titre du chapitre", type: string, required: true }
-          - { name: texte, label: "Texte du chapitre", type: text, description: "Laisser une ligne vide entre deux paragraphes. Pour mettre en gras : **texte**." }
-          - { name: photo, label: "Photo", type: image }
-          - { name: photo2, label: "Deuxième photo (facultative, s’affiche en petit)", type: image }
-          - { name: logos_partenaires, label: "Afficher les logos des partenaires à la place de la photo", type: boolean }
-      - { name: citation, label: "Phrase mise en avant (bloc « Nos valeurs »)", type: string }
-      - { name: valeurs_cles, label: "Valeurs en un mot (avec pictogramme)", type: string, list: true }
-      - { name: valeurs, label: "Texte « Nos valeurs »", type: text }
-      - { name: public, label: "Bloc « Pour qui ? »", type: text }
-      - { name: organisateurs, label: "Bloc « Les organisateurs »", type: text }
-      - name: faq
-        label: Questions fréquentes
-        type: object
-        list: { collapsible: { collapsed: true, summary: "{question}" } }
-        fields:
-          - { name: question, label: "Question", type: string }
-          - { name: reponse, label: "Réponse", type: text }
-
+  # ---------------------------------------------------------------- PARTENAIRES
   - name: partenaires
-    label: Partenaires
+    label: "5. Page « Partenaires »"
     type: file
     path: _data/partenaires.yml
     format: yaml
     fields:
-      - { name: devenir, label: "Texte « Devenir partenaire »", type: text }
+      - { name: titre_page, label: "Grand titre en haut de page", type: string }
+      - { name: sous_titre, label: "Phrase sous le titre", type: string }
       - name: liste
-        label: Liste des partenaires
+        label: "Liste des partenaires (aussi affichés sur l’accueil)"
         type: object
         list: { collapsible: { collapsed: true, summary: "{nom}" } }
         fields:
           - { name: nom, label: "Nom", type: string, required: true }
           - { name: logo, label: "Logo", type: image }
           - { name: lien, label: "Site internet", type: string }
-          - { name: categorie, label: "Catégorie (titre du groupe sur la page)", type: string, description: "Texte libre. Les partenaires qui ont exactement la même catégorie sont regroupés. Exemples : Partenaires financiers et institutionnels, Partenaires de l’animation." }
+          - { name: categorie, label: "Catégorie (titre du groupe sur la page)", type: string, description: "Texte libre. Les partenaires qui ont exactement la même catégorie sont regroupés." }
+      - { name: titre_devenir, label: "Bande bleue en bas : titre", type: string }
+      - name: devenir
+        label: "Bande bleue en bas : texte"
+        type: rich-text
+        options: { switcher: false, media: false }
+      - { name: bouton_devenir, label: "Bande bleue en bas : bouton", type: string }
 
+  # ---------------------------------------------------------------- CONTACT
+  - name: contact
+    label: "6. Page « Contact »"
+    type: file
+    path: _data/contact.yml
+    format: yaml
+    fields:
+      - { name: titre_page, label: "Grand titre en haut de page", type: string }
+      - { name: sous_titre, label: "Phrase sous le titre", type: string }
+      - name: contacts
+        label: "Contacts"
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{nom}" } }
+        fields:
+          - { name: sujet, label: "Sujet (petite ligne grise)", type: string }
+          - { name: nom, label: "Nom", type: string }
+          - { name: telephone, label: "Téléphone", type: string }
+          - { name: email, label: "Mail", type: string }
+      - name: reseaux
+        label: "Réseaux sociaux (aussi affichés en bas de chaque page)"
+        type: object
+        list: true
+        fields:
+          - { name: nom, label: "Nom (ex. Instagram)", type: string }
+          - { name: lien, label: "Lien", type: string }
+
+  # ---------------------------------------------------------------- MENTIONS LÉGALES
   - name: mentions
-    label: Mentions légales
+    label: "7. Page « Mentions légales »"
     type: file
     path: _data/mentions.yml
     format: yaml
     fields:
-      - { name: editeur, label: "Éditeur du site", type: text }
-      - { name: accessibilite, label: "Accessibilité", type: text }
+      - { name: editeur, label: "Éditeur du site", type: rich-text, options: { switcher: false, media: false } }
+      - { name: confidentialite, label: "Confidentialité et droit à l’image", type: rich-text, options: { switcher: false, media: false } }
+      - { name: accessibilite, label: "Accessibilité", type: rich-text, options: { switcher: false, media: false } }
+
+  # ---------------------------------------------------------------- RÉGLAGES
+  - name: general
+    label: "Réglages : logo, nom du site et Google"
+    type: file
+    path: _data/general.yml
+    format: yaml
+    fields:
+      - { name: nom, label: "Nom de l’événement (en haut de chaque page)", type: string }
+      - { name: logo, label: "Logo (en haut de chaque page)", type: image }
+      - { name: description_google, label: "Description affichée dans Google (environ 150 caractères)", type: text }
+      - { name: google_verification, label: "Code de vérification Google Search Console", type: string, description: "Coller uniquement le code (la valeur content=… fournie par Google)." }
