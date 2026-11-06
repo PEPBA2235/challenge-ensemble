@@ -287,3 +287,10 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 .audio-carte audio{width:100%}
 .audio-carte a{font-weight:700}
 .section-grise .audio-carte,.section .audio-carte{box-shadow:0 2px 0 #E5E7EB}
+
+/* Bande des chiffres centrée (accueil) */
+.chiffres-centres h2{text-align:center}
+.chiffres-centres .chiffres{justify-items:center;text-align:center;max-width:1100px;margin-left:auto;margin-right:auto}
+.chiffres-centres .chiffre{align-items:center;border-top:none;padding-top:0;position:relative}
+.chiffres-centres .chiffre::before{content:"";width:48px;height:4px;background:var(--bleu);margin-bottom:12px}
+.chiffre b{font-variant-numeric:tabular-nums}

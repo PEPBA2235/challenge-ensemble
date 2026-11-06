@@ -40,7 +40,7 @@ layout: default
 </div></section>
 
 {% if derniere %}
-<section class="section section-menthe" aria-labelledby="chiffres"><div class="conteneur">
+<section class="section section-menthe chiffres-centres" aria-labelledby="chiffres"><div class="conteneur">
   <h2 id="chiffres">{{ a.titre_chiffres | default: "L’édition [annee] en chiffres" | replace: "[annee]", derniere.annee }}</h2>
   {% include chiffres.html liste=derniere.chiffres %}
 </div></section>

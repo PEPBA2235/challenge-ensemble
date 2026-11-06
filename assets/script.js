@@ -17,3 +17,37 @@
   }
   maj(); setInterval(maj, 1000);
 })();
+
+/* Chiffres qui défilent quand ils apparaissent à l’écran.
+   Seuls les nombres sont animés : « ≈ 175 » ou « 6 + 1 » gardent leurs symboles. */
+(function(){
+  var cibles = document.querySelectorAll('.chiffre b');
+  if(!cibles.length) return;
+  var calme = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(calme || !('IntersectionObserver' in window)) return;
+  function animer(el){
+    var texte = el.getAttribute('data-final');
+    var morceaux = texte.split(/(\d+)/);
+    var debut = null, duree = 1600;
+    function pas(t){
+      if(!debut) debut = t;
+      var p = Math.min(1, (t - debut) / duree);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = morceaux.map(function(m){ return /^\d+$/.test(m) ? Math.round(parseInt(m,10) * e) : m; }).join('');
+      if(p < 1) requestAnimationFrame(pas); else el.textContent = texte;
+    }
+    requestAnimationFrame(pas);
+  }
+  var obs = new IntersectionObserver(function(entrees){
+    entrees.forEach(function(en){
+      if(en.isIntersecting){ obs.unobserve(en.target); animer(en.target); }
+    });
+  }, { threshold: 0.4 });
+  cibles.forEach(function(el){
+    var t = el.textContent.trim();
+    if(!/\d/.test(t)) return;
+    el.setAttribute('data-final', t);
+    el.textContent = t.replace(/\d+/g, '0');
+    obs.observe(el);
+  });
+})();
