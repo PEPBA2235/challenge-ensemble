@@ -1,6 +1,9 @@
 # Configuration Jekyll (compilée automatiquement par GitHub Pages). Ne pas modifier sans raison.
 title: Challenge Ensemble
 lang: fr
+url: https://challenge-ensemble.pepbretillarmor.org
+plugins:
+  - jekyll-sitemap
 collections:
   editions:
     output: true

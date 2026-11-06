@@ -1,5 +1,6 @@
 ---
 layout: default
+description: "Histoire, valeurs et organisateurs du Challenge Ensemble, tournoi de football inclusif pour les 10-15 ans coorganisé par le DITEP22 (PEP Bretill’Armor) et le Pordic-Binic Football Club."
 titre: Le Challenge
 ---
 {% assign c = site.data.challenge %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}
@@ -8,10 +9,10 @@ titre: Le Challenge
 <!-- Ouverture -->
 <section class="pc-hero">
   <div class="conteneur pc-hero-grille"><div class="pc-hero-texte">
-    <h1>Le Challenge<br>Ensemble</h1>
-    <p class="pc-sur-titre">Sport · Partage · Inclusion</p>
-    <p class="pc-intro">{{ c.intro }}</p>
-    <a class="bouton bouton-contour" href="#histoire">Notre histoire</a>
+    <h1>{{ c.titre | default: "Le Challenge Ensemble" }}</h1>
+    <p class="pc-sur-titre">{{ c.sur_titre | default: "Sport · Partage · Inclusion" }}</p>
+    <div class="pc-intro">{{ c.intro | markdownify }}</div>
+    <a class="bouton bouton-contour" href="#histoire">{{ c.bouton_histoire | default: "Notre histoire" }}</a>
   </div>
   {% if site.data.general.logo != blank %}<img class="pc-hero-logo" src="{{ site.data.general.logo }}" alt="">{% endif %}
   </div>
@@ -45,7 +46,7 @@ titre: Le Challenge
 <!-- Valeurs -->
 <section class="pc-valeurs" aria-labelledby="valeurs"><div class="conteneur">
   <div class="pc-valeurs-tete">
-    <h2 id="valeurs">Nos valeurs</h2>
+    <h2 id="valeurs">{{ c.titre_valeurs | default: "Nos valeurs" }}</h2>
     {% if c.citation != blank %}<p class="pc-citation">{{ c.citation }}</p>{% endif %}
   </div>
   {% if c.valeurs_cles.size > 0 %}
@@ -64,22 +65,22 @@ titre: Le Challenge
 
 <!-- Pour qui / organisateurs -->
 <section class="pc-qui"><div class="conteneur pc-qui-grille">
-  <div class="pc-qui-bloc pc-qui-1 texte-long"><h2>Pour qui ?</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
-  <div class="pc-qui-bloc pc-qui-2 texte-long"><h2>Les organisateurs</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
+  <div class="pc-qui-bloc pc-qui-1 texte-long"><h2>{{ c.titre_public | default: "Pour qui ?" }}</h2>{% include texte.html contenu=c.public vide="Public concerné à ajouter." %}</div>
+  <div class="pc-qui-bloc pc-qui-2 texte-long"><h2>{{ c.titre_organisateurs | default: "Les organisateurs" }}</h2>{% include texte.html contenu=c.organisateurs vide="Organisateurs à ajouter." %}</div>
 </div></section>
 
 {% if c.faq.size > 0 %}
 <section class="pc-faq" id="faq" aria-labelledby="titre-faq"><div class="conteneur">
-  <h2 id="titre-faq">Questions fréquentes</h2>
+  <h2 id="titre-faq">{{ c.titre_faq | default: "Questions fréquentes" }}</h2>
   <div class="faq">{% for q in c.faq %}<details><summary>{{ q.question }}</summary><div class="texte-long">{{ q.reponse | markdownify }}</div></details>{% endfor %}</div>
 </div></section>
 {% endif %}
 
 <section class="pc-appel"><div class="conteneur">
-  <h2>Envie de nous rejoindre ?</h2>
+  <h2>{{ c.titre_appel | default: "Envie de nous rejoindre ?" }}</h2>
   <div class="actions">
-    <a class="bouton bouton-menthe" href="{{ insc }}">Inscrire une équipe</a>
-    <a class="bouton bouton-contour" href="/partenaires.html#devenir-partenaire">Devenir partenaire</a>
+    <a class="bouton bouton-menthe" href="{{ insc }}">{{ c.bouton_appel_inscription | default: "Inscrire une équipe" }}</a>
+    <a class="bouton bouton-contour" href="/partenaires.html#devenir-partenaire">{{ c.bouton_appel_partenaire | default: "Devenir partenaire" }}</a>
   </div>
 </div></section>
 </div>

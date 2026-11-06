@@ -1,4 +1,7 @@
+titre: Le Challenge Ensemble
+sur_titre: Sport · Partage · Inclusion
 intro: Un événement coorganisé par le DITEP22 (PEP Bretill’Armor) et le Pordic-Binic Football Club, qui réunit des jeunes aux parcours différents autour du football.
+bouton_histoire: Notre histoire
 reperes:
 - valeur: 10 à 15 ans
   libelle: filles et garçons
@@ -73,6 +76,7 @@ chapitres:
   photo: /images/histoire-5.jpg
   photo2: /images/histoire-5b.jpg
   logos_partenaires: false
+titre_valeurs: Nos valeurs
 citation: Ici, l’essentiel n’est pas de gagner, mais de jouer ensemble.
 valeurs_cles:
 - Inclusion
@@ -81,12 +85,14 @@ valeurs_cles:
 - Partage
 - Dépassement de soi
 valeurs: 'Le Challenge Ensemble porte des valeurs fortes : l’inclusion, le respect, la solidarité, le partage et le dépassement de soi. À travers le football, nous souhaitons favoriser les rencontres entre des jeunes aux parcours différents, encourager la coopération et montrer que les différences sont une richesse. Ici, l’essentiel n’est pas de gagner, mais de jouer ensemble, de prendre du plaisir et de faire partie d’une même équipe.'
+titre_public: Pour qui ?
 public: |-
   Le Challenge Ensemble s’adresse aux **jeunes de 10 à 15 ans**, issus principalement des DITEP, DIME et autres structures sociales et médico-sociales, mais également des établissements scolaires et des clubs de football partenaires.
 
   L’événement rassemble **25 équipes composées de 7 jeunes**, filles et garçons, accompagnés de leurs encadrants. Lors du tournoi, les rencontres se disputent à **5 contre 5**, avec des remplaçants.
 
   La volonté est de réunir des jeunes aux profils et aux parcours variés, qu’ils soient sportifs confirmés ou débutants, dans un esprit d’inclusion, de mixité et de convivialité. **Aucun niveau de pratique particulier n’est exigé : l’essentiel est de participer et de partager une belle expérience collective.**
+titre_organisateurs: Les organisateurs
 organisateurs: |-
   Le Challenge Ensemble est un événement coorganisé par le DITEP22, établissement des PEP Bretill’Armor, et le Pordic-Binic Football Club (PBFC).
 
@@ -97,6 +103,7 @@ organisateurs: |-
   Tout au long de l’année, les organisateurs travaillent ensemble à la préparation de l’événement, avec le soutien de nombreux partenaires sportifs, institutionnels et financiers.
 
   Une aventure collective, portée avant tout par des personnes engagées et animées par l’envie de rassembler les jeunes autour du sport.
+titre_faq: Questions fréquentes
 faq:
 - question: Qui peut participer au Challenge Ensemble ?
   reponse: 'Le Challenge Ensemble s’adresse aux jeunes de 10 à 15 ans issus des DITEP, DIME, structures sociales et médico-sociales, mais également des établissements scolaires et clubs de football partenaires. L’objectif est de favoriser la rencontre entre des jeunes aux parcours différents, autour d’une passion commune : le sport.'
@@ -108,3 +115,6 @@ faq:
   reponse: Les inscriptions sont réalisées par les établissements et structures participantes, dans la limite des 25 équipes disponibles. Chaque équipe est composée de 5 à 8 jeunes accompagnés de leurs encadrants. Les modalités et le calendrier d’inscription sont communiqués sur le site internet.
 - question: Comment se passe l’hébergement ?
   reponse: L’organisation ne prend pas en charge l’hébergement, mais peut vous orienter vers les logements les plus proches (camping, hébergement en dur…).
+titre_appel: Envie de nous rejoindre ?
+bouton_appel_inscription: Inscrire une équipe
+bouton_appel_partenaire: Devenir partenaire

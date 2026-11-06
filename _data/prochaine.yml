@@ -1,29 +1,39 @@
+titre_page: Édition {annee}
 annee: 2027
 dates: Mardi 1er et mercredi 2 juin 2027
 lieu: Pordic et Binic-Étables-sur-Mer (Côtes-d’Armor)
-date_debut: "2027-06-01T11:00"
-lien_inscription: "https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027"
-reglement: ""
+date_debut: 2027-06-01T11:00
+lien_inscription: https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027
+reglement: ''
 programme:
-  - jour: Mardi 1er juin, à Pordic
-    horaires:
-      - heure: 11h
-        activite: Lancement du Challenge
-      - heure: ""
-        activite: Ateliers sportifs, éducatifs et ludiques
-      - heure: Soirée
-        activite: Grand repas convivial
-  - jour: Mercredi 2 juin, à Binic-Étables-sur-Mer
-    horaires:
-      - heure: ""
-        activite: Tournoi de football à 5 contre 5
-      - heure: ""
-        activite: Remise des récompenses
+- jour: Mardi 1er juin, à Pordic
+  horaires:
+  - heure: 11h
+    activite: Lancement du Challenge
+  - heure: ''
+    activite: Ateliers sportifs, éducatifs et ludiques
+  - heure: Soirée
+    activite: Grand repas convivial
+- jour: Mercredi 2 juin, à Binic-Étables-sur-Mer
+  horaires:
+  - heure: ''
+    activite: Tournoi de football à 5 contre 5
+  - heure: ''
+    activite: Remise des récompenses
 infos:
   adresse: |-
     Mardi 1er juin : Pordic
+
     Mercredi 2 juin : Binic-Étables-sur-Mer
-  acces: ""
+  acces: ''
   repas: Grand repas convivial le mardi soir.
   hebergement: L’organisation ne prend pas en charge l’hébergement, mais peut vous orienter vers les logements les plus proches (camping, hébergement en dur…).
-  a_prevoir: ""
+  a_prevoir: ''
+titre_programme: Programme
+titre_infos: Infos pratiques
+titre_inscription: Inscription
+texte_inscription: Les inscriptions se font par établissement, via le formulaire en ligne. Merci de lire le règlement avant de vous inscrire.
+texte_inscription_fermee: Les inscriptions ne sont pas encore ouvertes. Revenez bientôt ou écrivez-nous pour être prévenu.
+bouton_inscription: Ouvrir le formulaire d’inscription
+bouton_reglement: Télécharger le règlement
+date_fin: '2027-06-02'

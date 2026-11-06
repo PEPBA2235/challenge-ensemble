@@ -1,8 +1,9 @@
 ---
 layout: default
+description: "Photos, vidéos, bilans et revue de presse des éditions passées du Challenge Ensemble."
 titre: Archives
 ---
-<section class="bandeau-page"><div class="conteneur"><h1>Les éditions précédentes</h1><p>Photos, vidéos, bilans et presse de chaque édition.</p></div></section>
+<section class="bandeau-page"><div class="conteneur">{% assign ar = site.data.archives %}<h1>{{ ar.titre_page | default: "Les éditions précédentes" }}</h1><p>{{ ar.sous_titre | default: "Photos, vidéos, bilans et presse de chaque édition." }}</p></div></section>
 <section class="section"><div class="conteneur tuiles">
   {% assign eds = site.editions | sort: 'annee' | reverse %}
   {% for e in eds %}<a class="tuile" href="{{ e.url }}"><strong>Édition {{ e.annee }}</strong><span>{{ e.sous_titre }}</span></a>{% endfor %}

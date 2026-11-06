@@ -1,9 +1,10 @@
 ---
 layout: default
+description: "Les partenaires financiers, institutionnels et sportifs du Challenge Ensemble, et comment soutenir l’événement."
 titre: Partenaires
 ---
 {% assign pa = site.data.partenaires %}
-<section class="bandeau-page"><div class="conteneur"><h1>Nos partenaires</h1><p>Ils rendent le Challenge Ensemble possible.</p></div></section>
+<section class="bandeau-page"><div class="conteneur"><h1>{{ pa.titre_page | default: "Nos partenaires" }}</h1><p>{{ pa.sous_titre | default: "Ils rendent le Challenge Ensemble possible." }}</p></div></section>
 {% assign groupes = pa.liste | group_by: "categorie" %}
 {% assign rien = true %}
 {% for gr in groupes %}{% assign rien = false %}
@@ -15,8 +16,8 @@ titre: Partenaires
 {% if rien %}<section class="section"><div class="conteneur"><div class="logos">{% for i in (1..5) %}<div class="a-remplacer">Logo partenaire</div>{% endfor %}</div></div></section>{% endif %}
 <section class="section section-bleue" id="devenir-partenaire"><div class="conteneur deux-colonnes">
   <div>
-    <h2 style="margin-bottom:20px">Devenir partenaire</h2>
+    <h2 style="margin-bottom:20px">{{ pa.titre_devenir | default: "Devenir partenaire" }}</h2>
     {% if pa.devenir != blank %}{{ pa.devenir | markdownify }}{% else %}<p>Vous souhaitez soutenir le Challenge Ensemble ? Contactez-nous.</p>{% endif %}
   </div>
-  <div style="display:flex;align-items:center"><a class="bouton bouton-menthe" href="/contact.html">Nous contacter</a></div>
+  <div style="display:flex;align-items:center"><a class="bouton bouton-menthe" href="/contact.html">{{ pa.bouton_devenir | default: "Nous contacter" }}</a></div>
 </div></section>

@@ -1,54 +1,54 @@
 ---
 layout: default
 ---
-{% assign g = site.data.general %}{% assign insc = site.data.prochaine.lien_inscription | default: '/prochaine-edition.html#inscription' %}{% assign p = site.data.prochaine %}
+{% assign g = site.data.general %}{% assign a = site.data.accueil %}{% assign p = site.data.prochaine %}
+{% assign insc = p.lien_inscription | default: '/prochaine-edition.html#inscription' %}
 {% assign derniere = site.editions | sort: 'annee' | last %}
-{% if g.photo_bandeau != blank %}
+{% assign bandeau = a.photo_bandeau | default: g.photo_bandeau %}
+{% if bandeau != blank %}
 <section aria-labelledby="titre-accueil">
   <h1 id="titre-accueil" class="visuellement-cache">{{ g.nom }}</h1>
-  <img class="bandeau-illustre" src="{{ g.photo_bandeau }}" alt="Bandeau illustré du {{ g.nom }} : sport, partage, inclusion">
+  <img class="bandeau-illustre" src="{{ bandeau }}" alt="Bandeau illustré du {{ g.nom }}">
   <div class="hero-infos"><div class="conteneur">
     <div>
       <p class="sous-titre">Édition {{ p.annee }}{% if p.dates != blank %}, {{ p.dates }}{% endif %}</p>
-      <p class="accroche">{% if p.lieu != blank %}{{ p.lieu }}. {% endif %}{{ g.accroche }}</p>
+      <p class="accroche">{% if p.lieu != blank %}{{ p.lieu }}. {% endif %}{{ a.accroche | default: g.accroche }}</p>
+      <p class="accroche" style="font-size:1rem;opacity:.9">{{ a.organise_par | default: g.organise_par | default: "Organisé par le DITEP22 (PEP Bretill’Armor) et le Pordic-Binic Football Club." }}</p>
     </div>
     <div class="actions">
-      <a class="bouton bouton-menthe" href="{{ insc }}">Inscrire une équipe</a>
-      <a class="bouton bouton-contour" href="/le-challenge.html">Découvrir le Challenge</a>
+      <a class="bouton bouton-menthe" href="{{ insc }}">{{ a.bouton_inscription | default: "Inscrire une équipe" }}</a>
+      <a class="bouton bouton-contour" href="/le-challenge.html">{{ a.bouton_decouvrir | default: "Découvrir le Challenge" }}</a>
     </div>
   </div></div>
 </section>
 {% else %}
-<section class="hero"{% if g.photo_bandeau != blank %}{% endif %}>
-  {% if g.photo_bandeau == blank %}<span class="a-remplacer marque-photo" style="min-height:0;padding:8px 12px">Photo du bandeau à ajouter</span>{% endif %}
-  <div class="hero-voile"><div class="conteneur">
-    <h1>Challenge<br>Ensemble</h1>
-    <p class="accroche">{{ g.accroche }}</p>
-    <p class="sous-titre">Édition {{ p.annee }}{% if p.dates != blank %}, {{ p.dates }}{% endif %}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}</p>
-    <div class="actions">
-      <a class="bouton bouton-menthe" href="{{ insc }}">Inscrire une équipe</a>
-      <a class="bouton bouton-contour" href="/le-challenge.html">Découvrir le Challenge</a>
-    </div>
-  </div></div>
-</section>
+<section class="hero"><div class="hero-voile"><div class="conteneur">
+  <h1>{{ g.nom }}</h1>
+  <p class="accroche">{{ a.accroche | default: g.accroche }}</p>
+  <p class="sous-titre">Édition {{ p.annee }}{% if p.dates != blank %}, {{ p.dates }}{% endif %}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}</p>
+  <div class="actions">
+    <a class="bouton bouton-menthe" href="{{ insc }}">{{ a.bouton_inscription | default: "Inscrire une équipe" }}</a>
+    <a class="bouton bouton-contour" href="/le-challenge.html">{{ a.bouton_decouvrir | default: "Découvrir le Challenge" }}</a>
+  </div>
+</div></div></section>
 {% endif %}
 
 <section class="section-bleue" style="padding:48px 0"><div class="conteneur tuiles">
-  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>Inscription {{ p.annee }}</strong><span>Formulaire et règlement</span></a>
-  <a class="tuile" href="/prochaine-edition.html"><strong>Prochaine édition</strong><span>Dates, lieu, programme</span></a>
-  <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>Devenir partenaire</strong><span>Pourquoi nous soutenir</span></a>
+  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>{{ a.tuile1_titre | default: "Inscription {annee}" | replace: "{annee}", p.annee }}</strong><span>{{ a.tuile1_texte | default: "Formulaire et règlement" }}</span></a>
+  <a class="tuile" href="/prochaine-edition.html"><strong>{{ a.tuile2_titre | default: "Prochaine édition" }}</strong><span>{{ a.tuile2_texte | default: "Dates, lieu, programme" }}</span></a>
+  <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>{{ a.tuile3_titre | default: "Devenir partenaire" }}</strong><span>{{ a.tuile3_texte | default: "Pourquoi nous soutenir" }}</span></a>
 </div></section>
 
 {% if derniere %}
 <section class="section section-menthe" aria-labelledby="chiffres"><div class="conteneur">
-  <h2 id="chiffres">L’édition {{ derniere.annee }} en chiffres</h2>
+  <h2 id="chiffres">{{ a.titre_chiffres | default: "L’édition {annee} en chiffres" | replace: "{annee}", derniere.annee }}</h2>
   {% include chiffres.html liste=derniere.chiffres %}
 </div></section>
 {% endif %}
 
 {% if p.date_debut != blank %}
 <section class="section section-bleue centre" aria-labelledby="titre-rebours"><div class="conteneur">
-  <h2 id="titre-rebours">Prochaine édition dans</h2>
+  <h2 id="titre-rebours">{{ a.titre_rebours | default: "Prochaine édition dans" }}</h2>
   <div class="rebours" id="rebours" data-date="{{ p.date_debut }}">
     <div><b>00</b><span>Jours</span></div>
     <div><b>00</b><span>Heures</span></div>
@@ -60,27 +60,49 @@ layout: default
 
 {% if derniere %}
 <section class="section" aria-labelledby="images"><div class="conteneur">
-  <h2 id="images" style="margin-bottom:28px">L’édition {{ derniere.annee }} en images</h2>
+  <h2 id="images" style="margin-bottom:28px">{{ a.titre_galerie | default: "L’édition {annee} en images" | replace: "{annee}", derniere.annee }}</h2>
   {% capture alt %}Photo de l’édition {{ derniere.annee }}{% endcapture %}
   {% include galerie.html photos=derniere.photos limite=8 alt=alt %}
-  <a class="bouton bouton-bleu" href="{{ derniere.url }}#photos">Toutes les photos de {{ derniere.annee }}</a>
+  <a class="bouton bouton-bleu" href="{{ derniere.url }}#photos">{{ a.bouton_galerie | default: "Toutes les photos" }}</a>
 </div></section>
 
 <section class="section section-bleue" aria-labelledby="film"><div class="conteneur">
-  <h2 id="film" style="margin-bottom:28px">Le film de l’édition {{ derniere.annee }}</h2>
+  <h2 id="film" style="margin-bottom:28px">{{ a.titre_video | default: "Le film de l’édition {annee}" | replace: "{annee}", derniere.annee }}</h2>
   {% capture t %}Film de l’édition {{ derniere.annee }}{% endcapture %}
   {% include video.html url=derniere.video titre=t %}
 </div></section>
 {% endif %}
 
 <section class="section" aria-labelledby="partenaires"><div class="conteneur">
-  <div class="tete-section"><h2 id="partenaires">Partenaires</h2><a href="/partenaires.html" style="font-weight:700">Tous nos partenaires</a></div>
-  <div class="logos">{% if site.data.partenaires.liste.size > 0 %}{% for pa in site.data.partenaires.liste %}{% if pa.lien != blank %}<a href="{{ pa.lien }}" class="{% if pa.logo == blank %}logo-nom{% endif %}">{% else %}<span class="{% if pa.logo == blank %}logo-nom{% endif %}">{% endif %}{% if pa.logo != blank %}<img src="{{ pa.logo }}" alt="{{ pa.nom }}">{% else %}{{ pa.nom }}{% endif %}{% if pa.lien != blank %}</a>{% else %}</span>{% endif %}{% endfor %}{% else %}{% for i in (1..5) %}<div class="a-remplacer">Logo partenaire</div>{% endfor %}{% endif %}</div>
+  <div class="tete-section"><h2 id="partenaires">{{ a.titre_partenaires | default: "Partenaires" }}</h2><a href="/partenaires.html" style="font-weight:700">{{ a.lien_partenaires | default: "Tous nos partenaires" }}</a></div>
+  <div class="logos">{% for pa in site.data.partenaires.liste %}{% if pa.lien != blank %}<a href="{{ pa.lien }}" class="{% if pa.logo == blank %}logo-nom{% endif %}">{% else %}<span class="{% if pa.logo == blank %}logo-nom{% endif %}">{% endif %}{% if pa.logo != blank %}<img src="{{ pa.logo }}" alt="{{ pa.nom }}">{% else %}{{ pa.nom }}{% endif %}{% if pa.lien != blank %}</a>{% else %}</span>{% endif %}{% endfor %}</div>
 </div></section>
 
-{% if derniere %}
+{% if derniere and derniere.presse.size > 0 %}
 <section class="section section-grise" aria-labelledby="presse"><div class="conteneur">
-  <h2 id="presse" style="margin-bottom:28px">Ils en parlent</h2>
+  <h2 id="presse" style="margin-bottom:28px">{{ a.titre_presse | default: "Ils en parlent" }}</h2>
   {% include presse.html liste=derniere.presse limite=3 %}
 </div></section>
+{% endif %}
+
+{% if p.date_debut != blank %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": {{ g.nom | append: " " | append: p.annee | jsonify }},
+  "description": {{ g.description_google | default: g.accroche | jsonify }},
+  "startDate": {{ p.date_debut | jsonify }},
+  {% if p.date_fin and p.date_fin != "" %}"endDate": {{ p.date_fin | jsonify }},{% endif %}
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": { "@type": "Place", "name": {{ p.lieu | default: "Côtes-d’Armor" | jsonify }}, "address": { "@type": "PostalAddress", "addressRegion": "Côtes-d’Armor", "addressCountry": "FR" } },
+  {% if g.photo_bandeau != blank %}"image": [{{ site.url | append: g.photo_bandeau | jsonify }}],{% endif %}
+  {% if p.lien_inscription != blank %}"offers": { "@type": "Offer", "url": {{ p.lien_inscription | jsonify }} },{% endif %}
+  "organizer": [
+    { "@type": "Organization", "name": "PEP Bretill’Armor", "url": "https://www.pepbretillarmor.org" },
+    { "@type": "SportsOrganization", "name": "Pordic-Binic Football Club" }
+  ]
+}
+</script>
 {% endif %}

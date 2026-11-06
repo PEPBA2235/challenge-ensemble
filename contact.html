@@ -1,17 +1,18 @@
 ---
 layout: default
+description: "Contacter l’équipe du Challenge Ensemble : tournoi, hébergement, inscription et paiement."
 titre: Contact
 ---
-{% assign g = site.data.general %}
-<section class="bandeau-page"><div class="conteneur"><h1>Contact</h1><p>Équipes, établissements, partenaires, médias : écrivez-nous.</p></div></section>
+{% assign g = site.data.general %}{% assign ct = site.data.contact %}{% assign contacts = ct.contacts | default: g.contacts %}{% assign reseaux = ct.reseaux | default: g.reseaux %}
+<section class="bandeau-page"><div class="conteneur"><h1>{{ ct.titre_page | default: "Contact" }}</h1><p>{{ ct.sous_titre | default: "Équipes, établissements, partenaires, médias : écrivez-nous." }}</p></div></section>
 <section class="section"><div class="conteneur">
-  {% if g.contacts.size > 0 %}
-  <div class="contacts">{% for k in g.contacts %}<div class="contact">
+  {% if contacts.size > 0 %}
+  <div class="contacts">{% for k in contacts %}<div class="contact">
     <small>{{ k.sujet }}</small>
     <strong>{{ k.nom }}</strong>
     {% if k.telephone != blank %}<a href="tel:{{ k.telephone | remove: ' ' }}">{{ k.telephone }}</a>{% endif %}
     {% if k.email != blank %}<a href="mailto:{{ k.email }}">{{ k.email }}</a>{% endif %}
   </div>{% endfor %}</div>
   {% else %}<p class="a-remplacer">Contacts à ajouter</p>{% endif %}
-  {% if g.reseaux.size > 0 %}<p style="margin-top:32px">Réseaux sociaux : {% for r in g.reseaux %}<a href="{{ r.lien }}">{{ r.nom }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>{% endif %}
+  {% if reseaux.size > 0 %}<p style="margin-top:32px">Réseaux sociaux : {% for r in reseaux %}<a href="{{ r.lien }}">{{ r.nom }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>{% endif %}
 </div></section>

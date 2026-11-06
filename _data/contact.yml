@@ -1,0 +1,16 @@
+titre_page: Contact
+sous_titre: 'Équipes, établissements, partenaires, médias : écrivez-nous.'
+contacts:
+- sujet: Questions sur le tournoi (partie football)
+  nom: Edouard Duchesne
+  telephone: 06 37 88 77 13
+  email: e.duchesne@pepbretillarmor.org
+- sujet: Hébergement et questions diverses
+  nom: Angélique Tching
+  telephone: 06 63 00 34 72
+  email: a.tching@pepbretillarmor.org
+- sujet: Inscription et paiement
+  nom: Laura Pibouin
+  telephone: 07 57 68 59 14
+  email: l.pibouin@pepbretillarmor.org
+reseaux: []
