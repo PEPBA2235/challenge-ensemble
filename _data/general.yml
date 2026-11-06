@@ -1,5 +1,6 @@
 nom: Challenge Ensemble
-accroche: Deux journées de rencontres, de partage et de compétition autour du sport inclusif.
+accroche: Deux journées de rencontres, de partage et de compétition autour du
+  sport inclusif.
 logo: /images/logo-challenge-ensemble.png
 photo_bandeau: /images/bandeau-challenge-ensemble.jpg
 contacts:
@@ -15,4 +16,10 @@ contacts:
     nom: Laura Pibouin
     telephone: 07 57 68 59 14
     email: l.pibouin@pepbretillarmor.org
-reseaux: []
+reseaux:
+  - nom: Instagram
+    lien: https://www.instagram.com/pepbretillarmor
+  - nom: Facebook
+    lien: https://www.facebook.com/people/PEP-Br%C3%A9tillArmor/61587065810791/
+  - nom: LinkedIn
+    lien: https://www.linkedin.com/company/pep-bretill'armor/
