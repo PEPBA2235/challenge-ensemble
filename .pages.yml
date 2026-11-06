@@ -3,7 +3,7 @@
 media:
   input: images
   output: /images
-  categories: [image, document]
+  categories: [image, document, video]
   rename: safe
 
 content:
@@ -198,7 +198,8 @@ content:
         type: rich-text
         options: { switcher: false, media: false }
       - { name: photos, label: "Photos", type: image, options: { multiple: { max: 200 } }, description: "Uniquement des photos avec autorisation de diffusion. Les 8 premières apparaissent sur l’accueil." }
-      - { name: video, label: "Lien YouTube de la vidéo", type: string }
+      - { name: video, label: "Vidéo : lien YouTube ou Vimeo (facultatif)", type: string, description: "Si vous n’avez pas de lien, laissez vide : le bloc vidéo disparaît du site." }
+      - { name: video_fichier, label: "Vidéo : ou fichier vidéo à déposer (facultatif)", type: file, description: "Format MP4, 25 Mo maximum. Utilisé seulement s’il n’y a pas de lien ci-dessus." }
       - name: presse
         label: "Revue de presse"
         type: object
