@@ -13,20 +13,25 @@ content:
     type: file
     path: _data/accueil.yml
     format: yaml
+    description: "Les dates et le lieu se modifient dans « 3. Édition », les chiffres, photos, vidéo et articles dans « 4. Archives », les logos dans « 5. Partenaires ». Le menu et le bas de page se modifient dans « Réglages »."
     fields:
       - { name: photo_bandeau, label: "Grand bandeau en haut de page", type: image, description: "Image large et horizontale (format paysage)." }
-      - { name: accroche, label: "Phrase d’accroche (sous les dates)", type: string }
-      - { name: organise_par, label: "Phrase « Organisé par… »", type: string }
+      - { name: accroche, label: "Phrase d’accroche (sous les dates)", type: rich-text, options: { switcher: false, media: false } }
+      - { name: organise_par, label: "Phrase « Organisé par… »", type: rich-text, options: { switcher: false, media: false } }
       - { name: bouton_inscription, label: "Bouton vert (mène à HelloAsso)", type: string }
       - { name: bouton_decouvrir, label: "Bouton blanc (mène à la page Le Challenge)", type: string }
       - { name: tuile1_titre, label: "Tuile verte : titre", type: string, description: "[annee] est remplacé automatiquement par l’année de la prochaine édition." }
-      - { name: tuile1_texte, label: "Tuile verte : petit texte", type: string }
+      - { name: tuile1_texte, label: "Tuile verte : petit texte", type: rich-text, options: { switcher: false, media: false } }
       - { name: tuile2_titre, label: "Tuile bleue du milieu : titre", type: string }
-      - { name: tuile2_texte, label: "Tuile bleue du milieu : petit texte", type: string }
+      - { name: tuile2_texte, label: "Tuile bleue du milieu : petit texte", type: rich-text, options: { switcher: false, media: false } }
       - { name: tuile3_titre, label: "Tuile bleue de droite : titre", type: string }
-      - { name: tuile3_texte, label: "Tuile bleue de droite : petit texte", type: string }
+      - { name: tuile3_texte, label: "Tuile bleue de droite : petit texte", type: rich-text, options: { switcher: false, media: false } }
       - { name: titre_chiffres, label: "Titre de la bande des chiffres", type: string, description: "[annee] = année de la dernière édition. Les chiffres se modifient dans « 4. Archives » › l’édition concernée." }
       - { name: titre_rebours, label: "Titre du compte à rebours", type: string }
+      - { name: rebours_jours, label: "Compte à rebours : mot « Jours »", type: string }
+      - { name: rebours_heures, label: "Compte à rebours : mot « Heures »", type: string }
+      - { name: rebours_minutes, label: "Compte à rebours : mot « Minutes »", type: string }
+      - { name: rebours_secondes, label: "Compte à rebours : mot « Secondes »", type: string }
       - { name: titre_galerie, label: "Titre de la galerie photos", type: string, description: "[annee] = année de la dernière édition. Les photos se modifient dans « 4. Archives »." }
       - { name: bouton_galerie, label: "Bouton sous la galerie", type: string }
       - { name: titre_video, label: "Titre de la vidéo", type: string }
@@ -165,7 +170,7 @@ content:
     format: yaml
     fields:
       - { name: titre_page, label: "Grand titre en haut de page", type: string }
-      - { name: sous_titre, label: "Phrase sous le titre", type: string }
+      - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
 
   - name: editions
     label: "4. Archives : une fiche par édition passée"
@@ -176,7 +181,7 @@ content:
     view: { primary: annee, sort: annee, order: desc }
     fields:
       - { name: annee, label: "Année", type: number, required: true }
-      - { name: sous_titre, label: "Phrase sous le titre", type: string }
+      - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
       - name: chiffres
         label: "Chiffres clés (aussi affichés sur l’accueil pour la dernière édition)"
         type: object
@@ -212,7 +217,7 @@ content:
     format: yaml
     fields:
       - { name: titre_page, label: "Grand titre en haut de page", type: string }
-      - { name: sous_titre, label: "Phrase sous le titre", type: string }
+      - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
       - name: liste
         label: "Liste des partenaires (aussi affichés sur l’accueil)"
         type: object
@@ -237,7 +242,7 @@ content:
     format: yaml
     fields:
       - { name: titre_page, label: "Grand titre en haut de page", type: string }
-      - { name: sous_titre, label: "Phrase sous le titre", type: string }
+      - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
       - name: contacts
         label: "Contacts"
         type: object
@@ -268,12 +273,22 @@ content:
 
   # ---------------------------------------------------------------- RÉGLAGES
   - name: general
-    label: "Réglages : logo, nom du site et Google"
+    label: "Réglages : logo, menu, bas de page et Google"
+    description: "Un champ laissé vide garde le texte actuel du site."
     type: file
     path: _data/general.yml
     format: yaml
     fields:
       - { name: nom, label: "Nom de l’événement (en haut de chaque page)", type: string }
       - { name: logo, label: "Logo (en haut de chaque page)", type: image }
+      - { name: menu_challenge, label: "Menu : lien « Le Challenge »", type: string }
+      - { name: menu_edition, label: "Menu : lien vers l’édition", type: string, description: "[annee] est remplacé automatiquement." }
+      - { name: menu_archives, label: "Menu : lien « Archives »", type: string }
+      - { name: menu_partenaires, label: "Menu : lien « Partenaires »", type: string }
+      - { name: menu_contact, label: "Menu : lien « Contact »", type: string }
+      - { name: menu_inscription, label: "Menu : bouton vert", type: string }
+      - { name: pied_question, label: "Bas de page : « Une question ? »", type: string }
+      - { name: pied_lien_contact, label: "Bas de page : lien vers le contact", type: string }
+      - { name: pied_reseaux, label: "Bas de page : texte avant les réseaux sociaux", type: string }
       - { name: description_google, label: "Description affichée dans Google (environ 150 caractères)", type: text }
       - { name: google_verification, label: "Code de vérification Google Search Console", type: string, description: "Coller uniquement le code (la valeur content=… fournie par Google)." }
