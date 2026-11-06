@@ -34,14 +34,14 @@ layout: default
 {% endif %}
 
 <section class="section-bleue" style="padding:48px 0"><div class="conteneur tuiles">
-  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>{{ a.tuile1_titre | default: "Inscription {annee}" | replace: "{annee}", p.annee }}</strong><span>{{ a.tuile1_texte | default: "Formulaire et règlement" }}</span></a>
+  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>{{ a.tuile1_titre | default: "Inscription [annee]" | replace: "[annee]", p.annee }}</strong><span>{{ a.tuile1_texte | default: "Formulaire et règlement" }}</span></a>
   <a class="tuile" href="/prochaine-edition.html"><strong>{{ a.tuile2_titre | default: "Prochaine édition" }}</strong><span>{{ a.tuile2_texte | default: "Dates, lieu, programme" }}</span></a>
   <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>{{ a.tuile3_titre | default: "Devenir partenaire" }}</strong><span>{{ a.tuile3_texte | default: "Pourquoi nous soutenir" }}</span></a>
 </div></section>
 
 {% if derniere %}
 <section class="section section-menthe" aria-labelledby="chiffres"><div class="conteneur">
-  <h2 id="chiffres">{{ a.titre_chiffres | default: "L’édition {annee} en chiffres" | replace: "{annee}", derniere.annee }}</h2>
+  <h2 id="chiffres">{{ a.titre_chiffres | default: "L’édition [annee] en chiffres" | replace: "[annee]", derniere.annee }}</h2>
   {% include chiffres.html liste=derniere.chiffres %}
 </div></section>
 {% endif %}
@@ -60,14 +60,14 @@ layout: default
 
 {% if derniere %}
 <section class="section" aria-labelledby="images"><div class="conteneur">
-  <h2 id="images" style="margin-bottom:28px">{{ a.titre_galerie | default: "L’édition {annee} en images" | replace: "{annee}", derniere.annee }}</h2>
+  <h2 id="images" style="margin-bottom:28px">{{ a.titre_galerie | default: "L’édition [annee] en images" | replace: "[annee]", derniere.annee }}</h2>
   {% capture alt %}Photo de l’édition {{ derniere.annee }}{% endcapture %}
   {% include galerie.html photos=derniere.photos limite=8 alt=alt %}
   <a class="bouton bouton-bleu" href="{{ derniere.url }}#photos">{{ a.bouton_galerie | default: "Toutes les photos" }}</a>
 </div></section>
 
 <section class="section section-bleue" aria-labelledby="film"><div class="conteneur">
-  <h2 id="film" style="margin-bottom:28px">{{ a.titre_video | default: "Le film de l’édition {annee}" | replace: "{annee}", derniere.annee }}</h2>
+  <h2 id="film" style="margin-bottom:28px">{{ a.titre_video | default: "Le film de l’édition [annee]" | replace: "[annee]", derniere.annee }}</h2>
   {% capture t %}Film de l’édition {{ derniere.annee }}{% endcapture %}
   {% include video.html url=derniere.video titre=t %}
 </div></section>

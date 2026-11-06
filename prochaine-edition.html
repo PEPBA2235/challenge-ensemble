@@ -4,7 +4,7 @@ description: "Dates, lieu, programme et inscription de la prochaine édition du 
 titre: Prochaine édition
 ---
 {% assign p = site.data.prochaine %}
-<section class="bandeau-page"><div class="conteneur"><h1>{{ p.titre_page | default: "Édition {annee}" | replace: "{annee}", p.annee }}</h1><p>{{ p.dates | default: "Dates à venir" }}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}</p></div></section>
+<section class="bandeau-page"><div class="conteneur"><h1>{{ p.titre_page | default: "Édition [annee]" | replace: "[annee]", p.annee }}</h1><p>{{ p.dates | default: "Dates à venir" }}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}</p></div></section>
 <section class="section"><div class="conteneur deux-colonnes">
   <div>
     <h2 style="margin-bottom:20px">{{ p.titre_programme | default: "Programme" }}</h2>
