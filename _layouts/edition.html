@@ -16,11 +16,14 @@ layout: default
   {% capture alt %}Photo de l’édition {{ e.annee }}{% endcapture %}
   {% include galerie.html photos=e.photos limite=200 alt=alt %}
 </div></section>
+{% capture v_test %}{{ e.video }}{{ e.video_fichier }}{% endcapture %}{% assign v_test = v_test | strip %}
+{% if v_test != "" %}
 <section class="section section-bleue"><div class="conteneur">
   <h2 style="margin-bottom:28px">Le film</h2>
   {% capture t %}Film de l’édition {{ e.annee }}{% endcapture %}
-  {% include video.html url=e.video titre=t %}
+  {% include video.html url=e.video fichier=e.video_fichier titre=t %}
 </div></section>
+{% endif %}
 <section class="section"><div class="conteneur">
   <h2 style="margin-bottom:28px">Revue de presse</h2>
   {% include presse.html liste=e.presse limite=50 fond=true %}

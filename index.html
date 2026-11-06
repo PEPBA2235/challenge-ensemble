@@ -66,11 +66,14 @@ layout: default
   <a class="bouton bouton-bleu" href="{{ derniere.url }}#photos">{{ a.bouton_galerie | default: "Toutes les photos" }}</a>
 </div></section>
 
+{% capture v_test %}{{ derniere.video }}{{ derniere.video_fichier }}{% endcapture %}{% assign v_test = v_test | strip %}
+{% if v_test != "" %}
 <section class="section section-bleue" aria-labelledby="film"><div class="conteneur">
   <h2 id="film" style="margin-bottom:28px">{{ a.titre_video | default: "Le film de l’édition [annee]" | replace: "[annee]", derniere.annee }}</h2>
   {% capture t %}Film de l’édition {{ derniere.annee }}{% endcapture %}
-  {% include video.html url=derniere.video titre=t %}
+  {% include video.html url=derniere.video fichier=derniere.video_fichier titre=t %}
 </div></section>
+{% endif %}
 {% endif %}
 
 <section class="section" aria-labelledby="partenaires"><div class="conteneur">
