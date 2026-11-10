@@ -1,5 +1,6 @@
 titre_page: Contact
 sous_titre: 'Équipes, établissements, partenaires, médias : écrivez-nous.'
+photo_bandeau: /images/illustration-celebration.jpg
 contacts:
 - sujet: Questions sur le tournoi (partie football)
   nom: Edouard Duchesne
@@ -13,4 +14,8 @@ contacts:
   nom: Laura Pibouin
   telephone: 07 57 68 59 14
   email: l.pibouin@pepbretillarmor.org
+- sujet: Traitements médicaux
+  nom: Coralie Rabin
+  telephone: 07 85 56 06 13
+  email: c.rabin@pepbretillarmor.org
 reseaux: []

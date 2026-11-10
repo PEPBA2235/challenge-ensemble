@@ -4,7 +4,8 @@ description: "Dates, lieu, programme et inscription de la prochaine édition du 
 titre: Prochaine édition
 ---
 {% assign p = site.data.prochaine %}
-<section class="bandeau-page"><div class="conteneur"><h1>{{ p.titre_page | default: "Édition [annee]" | replace: "[annee]", p.annee }}</h1><p>{{ p.dates | default: "Dates à venir" }}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}</p></div></section>
+{% capture t %}{{ p.titre_page | default: "Édition [annee]" | replace: "[annee]", p.annee }}{% endcapture %}{% capture st %}{{ p.dates | default: "Dates à venir" }}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}{% endcapture %}
+{% include bandeau-page.html titre=t sous_titre=st photo=p.photo_bandeau %}
 <section class="section"><div class="conteneur deux-colonnes">
   <div>
     <h2 style="margin-bottom:20px">{{ p.titre_programme | default: "Programme" }}</h2>
@@ -19,8 +20,11 @@ titre: Prochaine édition
       <dt>Lieu</dt><dd>{{ p.infos.adresse | default: "À venir" | markdownify }}</dd>
       <dt>Accès</dt><dd>{{ p.infos.acces | default: "À venir" | markdownify }}</dd>
       <dt>Repas</dt><dd>{{ p.infos.repas | default: "À venir" | markdownify }}</dd>
+      {% if p.infos.equipes != blank %}<dt>Équipes</dt><dd>{{ p.infos.equipes | markdownify }}</dd>{% endif %}
+      {% if p.infos.tarif != blank %}<dt>Participation</dt><dd>{{ p.infos.tarif | markdownify }}</dd>{% endif %}
       <dt>Hébergement</dt><dd>{{ p.infos.hebergement | default: "À venir" | markdownify }}</dd>
       <dt>À prévoir</dt><dd>{{ p.infos.a_prevoir | default: "À venir" | markdownify }}</dd>
+      {% if p.infos.sante != blank %}<dt>Traitements médicaux</dt><dd>{{ p.infos.sante | markdownify }}</dd>{% endif %}
     </dl>
   </div>
 </div></section>

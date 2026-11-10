@@ -4,7 +4,8 @@ description: "Contacter l’équipe du Challenge Ensemble : tournoi, hébergemen
 titre: Contact
 ---
 {% assign g = site.data.general %}{% assign ct = site.data.contact %}{% assign contacts = ct.contacts | default: g.contacts %}{% assign reseaux = ct.reseaux | default: g.reseaux %}
-<section class="bandeau-page"><div class="conteneur"><h1>{{ ct.titre_page | default: "Contact" }}</h1><p>{{ ct.sous_titre | markdownify | remove: "<p>" | remove: "</p>" | strip | default: "Équipes, établissements, partenaires, médias : écrivez-nous." }}</p></div></section>
+{% capture t %}{{ ct.titre_page | default: "Contact" }}{% endcapture %}{% capture st %}{{ ct.sous_titre | markdownify | remove: "<p>" | remove: "</p>" | strip | default: "Équipes, établissements, partenaires, médias : écrivez-nous." }}{% endcapture %}
+{% include bandeau-page.html titre=t sous_titre=st photo=ct.photo_bandeau %}
 <section class="section"><div class="conteneur">
   {% if contacts.size > 0 %}
   <div class="contacts">{% for k in contacts %}<div class="contact">

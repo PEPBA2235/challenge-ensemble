@@ -34,9 +34,9 @@ layout: default
 {% endif %}
 
 <section class="section-bleue" style="padding:48px 0"><div class="conteneur tuiles">
-  <a class="tuile tuile-menthe" href="{{ insc }}"><strong>{{ a.tuile1_titre | default: "Inscription [annee]" | replace: "[annee]", p.annee }}</strong><span>{{ a.tuile1_texte | default: "Formulaire et règlement" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
-  <a class="tuile" href="/prochaine-edition.html"><strong>{{ a.tuile2_titre | default: "Prochaine édition" }}</strong><span>{{ a.tuile2_texte | default: "Dates, lieu, programme" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
-  <a class="tuile" href="/partenaires.html#devenir-partenaire"><strong>{{ a.tuile3_titre | default: "Devenir partenaire" }}</strong><span>{{ a.tuile3_texte | default: "Pourquoi nous soutenir" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
+  <a class="tuile tuile-menthe{% if a.tuile1_photo != blank %} tuile-photo{% endif %}" href="{{ insc }}"{% if a.tuile1_photo != blank %} style="background-image:url('{{ a.tuile1_photo }}')"{% endif %}><strong>{{ a.tuile1_titre | default: "Inscription [annee]" | replace: "[annee]", p.annee }}</strong><span>{{ a.tuile1_texte | default: "Formulaire et règlement" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
+  <a class="tuile{% if a.tuile2_photo != blank %} tuile-photo{% endif %}" href="/prochaine-edition.html"{% if a.tuile2_photo != blank %} style="background-image:url('{{ a.tuile2_photo }}')"{% endif %}><strong>{{ a.tuile2_titre | default: "Prochaine édition" }}</strong><span>{{ a.tuile2_texte | default: "Dates, lieu, programme" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
+  <a class="tuile{% if a.tuile3_photo != blank %} tuile-photo{% endif %}" href="/partenaires.html#devenir-partenaire"{% if a.tuile3_photo != blank %} style="background-image:url('{{ a.tuile3_photo }}')"{% endif %}><strong>{{ a.tuile3_titre | default: "Devenir partenaire" }}</strong><span>{{ a.tuile3_texte | default: "Pourquoi nous soutenir" | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></a>
 </div></section>
 
 {% if derniere %}
@@ -59,12 +59,14 @@ layout: default
 {% endif %}
 
 {% if derniere %}
+{% if derniere.photos.size > 0 %}
 <section class="section" aria-labelledby="images"><div class="conteneur">
   <h2 id="images" style="margin-bottom:28px">{{ a.titre_galerie | default: "L’édition [annee] en images" | replace: "[annee]", derniere.annee }}</h2>
   {% capture alt %}Photo de l’édition {{ derniere.annee }}{% endcapture %}
   {% include galerie.html photos=derniere.photos limite=8 alt=alt %}
   <a class="bouton bouton-bleu" href="{{ derniere.url }}#photos">{{ a.bouton_galerie | default: "Toutes les photos" }}</a>
 </div></section>
+{% endif %}
 
 {% capture v_test %}{{ derniere.video }}{{ derniere.video_fichier }}{% endcapture %}{% assign v_test = v_test | strip %}
 {% if v_test != "" %}

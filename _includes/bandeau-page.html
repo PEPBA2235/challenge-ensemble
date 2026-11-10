@@ -1,0 +1,3 @@
+{% comment %} En-tête des pages intérieures, avec photo de fond facultative. {% endcomment %}
+{% assign ph = include.photo | strip %}
+<section class="bandeau-page{% if ph != '' %} bandeau-photo{% endif %}"{% if ph != '' %} style="background-image:url('{{ ph }}')"{% endif %}><div class="conteneur"><h1>{{ include.titre }}</h1>{% if include.sous_titre != blank %}<p>{{ include.sous_titre }}</p>{% endif %}</div></section>

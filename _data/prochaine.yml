@@ -1,39 +1,68 @@
 titre_page: Édition [annee]
+photo_bandeau: /images/illustration-action.jpg
 annee: 2027
 dates: Mardi 1er et mercredi 2 juin 2027
 lieu: Pordic et Binic-Étables-sur-Mer (Côtes-d’Armor)
-date_debut: 2027-06-01T11:00
-lien_inscription: https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027
-reglement: ''
+date_debut: 2027-06-01T10:30
+date_fin: '2027-06-02'
+titre_programme: Programme
 programme:
-- jour: Mardi 1er juin, à Pordic
+- jour: Mardi 1er juin
   horaires:
+  - heure: 10h30
+    activite: Accueil des participants au complexe sportif Roger-Duchêne, à Pordic
   - heure: 11h
-    activite: Lancement du Challenge
-  - heure: ''
-    activite: Ateliers sportifs, éducatifs et ludiques
-  - heure: Soirée
-    activite: Grand repas convivial
-- jour: Mercredi 2 juin, à Binic-Étables-sur-Mer
+    activite: Début des ateliers ludiques, sportifs et éducatifs, animés par le CDSA 22, le District et la Ligue de Bretagne de football
+  - heure: 16h30
+    activite: Fin des ateliers
+  - heure: 17h30
+    activite: 'À Binic (stade Jean-François Capitaine, salle de l’Estran) : présentation des équipes et défilé aux couleurs du pays tiré au sort'
+  - heure: 18h30
+    activite: Pot de l’amitié, temps d’échange et de convivialité pour les jeunes et les accompagnateurs
+  - heure: 19h30
+    activite: Repas convivial
+- jour: Mercredi 2 juin
   horaires:
-  - heure: ''
-    activite: Tournoi de football à 5 contre 5
-  - heure: ''
+  - heure: 9h
+    activite: Accueil des équipes
+  - heure: 9h30
+    activite: 'Début du tournoi : phase de poules jusqu’à 12h30'
+  - heure: 12h30
+    activite: Pause repas
+  - heure: 13h30
+    activite: Phases finales et match de classement
+  - heure: 16h
     activite: Remise des récompenses
+  - heure: 17h
+    activite: Fin du tournoi
+titre_infos: Infos pratiques
 infos:
   adresse: |-
-    Mardi 1er juin : Pordic
+    **Mardi** : complexe sportif Roger-Duchêne à Pordic (accueil dès 10h30), puis stade Jean-François Capitaine à Binic à partir de 17h30.
 
-    Mercredi 2 juin : Binic-Étables-sur-Mer
+    **Mercredi** : Binic-Étables-sur-Mer.
   acces: ''
-  repas: Grand repas convivial le mardi soir.
-  hebergement: L’organisation ne prend pas en charge l’hébergement, mais peut vous orienter vers les logements les plus proches (camping, hébergement en dur…).
-  a_prevoir: ''
-titre_programme: Programme
-titre_infos: Infos pratiques
+  equipes: |-
+    25 équipes de **7 joueurs maximum** (5 joueurs de champ et 2 remplaçants), **nés entre 2011 et 2016**. Mixité possible et encouragée. Chaque structure peut inscrire plusieurs équipes.
+
+    Chaque équipe se voit attribuer un pays lors d’un tirage au sort en avril 2027 : mascotte, drapeaux, maquillage, à votre créativité !
+  tarif: '**30 € par personne**, joueur comme accompagnateur. Cela comprend l’inscription au tournoi et aux ateliers, le repas du mardi soir et les animations, le repas du mercredi midi, les goûters des deux jours et les lots.'
+  repas: Le repas du mardi midi n’est **pas prévu sur place**. Le repas du mardi soir, celui du mercredi midi et les goûters sont inclus dans la participation.
+  hebergement: L’hébergement n’est pas pris en charge. L’organisation reste disponible pour vous orienter vers les logements les plus proches.
+  a_prevoir: 'Par joueur : une gourde, une paire de tennis ou de crampons, une tenue adaptée et des **protège-tibias (obligatoires)**. Les chasubles et les ballons sont fournis.'
+  sante: Une infirmière coordinatrice est présente les deux jours. Elle peut administrer les médicaments sur présentation d’une ordonnance à jour et du traitement. Un adulte référent est demandé auprès du jeune. Merci de contacter Coralie Rabin dès l’inscription (voir la page Contact).
 titre_inscription: Inscription
-texte_inscription: Les inscriptions se font par établissement, via le formulaire en ligne. Merci de lire le règlement avant de vous inscrire.
+lien_inscription: https://www.helloasso.com/associations/pep-bretill-armor/evenements/tournoi-football-challenge-ensemble-2027
+texte_inscription: |-
+  Pour inscrire une équipe :
+
+  1. Envoyer **un bulletin d’inscription par équipe**, complété et signé par chaque équipier et accompagnateur, avec l’autorisation parentale des joueurs, à l.pibouin@pepbretillarmor.org.
+  2. Régler la participation en ligne sur HelloAsso (30 € par personne, jeune et adulte).
+
+  L’inscription est validée à réception du dossier complet et du paiement ; l’équipe reçoit alors un mail de confirmation. **Dossier à renvoyer avant le 19 février 2027.**
+
+  Tout désistement doit être signalé au plus tôt : les frais ne sont pas remboursés après le 30 avril 2027.
 texte_inscription_fermee: Les inscriptions ne sont pas encore ouvertes. Revenez bientôt ou écrivez-nous pour être prévenu.
 bouton_inscription: Ouvrir le formulaire d’inscription
+reglement: /images/reglement-challenge-ensemble-2027.pdf
 bouton_reglement: Télécharger le règlement
-date_fin: '2027-06-02'

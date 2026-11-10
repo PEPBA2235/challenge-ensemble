@@ -294,3 +294,13 @@ a.partenaire:hover .partenaire-nom{text-decoration:underline}
 .chiffres-centres .chiffre{align-items:center;border-top:none;padding-top:0;position:relative}
 .chiffres-centres .chiffre::before{content:"";width:48px;height:4px;background:var(--bleu);margin-bottom:12px}
 .chiffre b{font-variant-numeric:tabular-nums}
+
+/* En-têtes de pages avec photo */
+.bandeau-photo{position:relative;background-size:cover;background-position:center;padding:110px 0 80px}
+.bandeau-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,44,158,.92) 0,rgba(31,59,209,.75) 55%,rgba(31,59,209,.35))}
+.bandeau-photo .conteneur{position:relative}
+/* Tuiles de l’accueil avec photo */
+.tuile-photo{position:relative;background-size:cover;background-position:center;isolation:isolate}
+.tuile-photo::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(23,44,158,.8)}
+.tuile-photo.tuile-menthe::before{background:rgba(46,230,166,.88)}
+.tuile-photo{min-height:280px}

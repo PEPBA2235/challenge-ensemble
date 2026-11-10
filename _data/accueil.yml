@@ -1,14 +1,17 @@
-photo_bandeau: /images/bandeau-challenge-ensemble.jpg
+photo_bandeau: /images/bandeau-challenge-ensemble-2027.jpg
 accroche: Deux journées de rencontres, de partage et de compétition autour du sport inclusif.
 organise_par: Organisé par le DITEP22 (PEP Bretill’Armor) et le Pordic-Binic Football Club.
 bouton_inscription: Inscrire une équipe
 bouton_decouvrir: Découvrir le Challenge
 tuile1_titre: Inscription [annee]
 tuile1_texte: Formulaire et règlement
+tuile1_photo: /images/illustration-action.jpg
 tuile2_titre: Prochaine édition
 tuile2_texte: Dates, lieu, programme
+tuile2_photo: /images/illustration-oriflamme.jpg
 tuile3_titre: Devenir partenaire
 tuile3_texte: Pourquoi nous soutenir
+tuile3_photo: /images/illustration-fair-play.jpg
 titre_chiffres: L’édition [annee] en chiffres
 titre_rebours: Prochaine édition dans
 titre_galerie: L’édition [annee] en images
