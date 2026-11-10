@@ -22,10 +22,13 @@ content:
       - { name: bouton_decouvrir, label: "Bouton blanc (mène à la page Le Challenge)", type: string }
       - { name: tuile1_titre, label: "Tuile verte : titre", type: string, description: "[annee] est remplacé automatiquement par l’année de la prochaine édition." }
       - { name: tuile1_texte, label: "Tuile verte : petit texte", type: rich-text, options: { switcher: false, media: false } }
+      - { name: tuile1_photo, label: "Tuile verte : photo de fond (facultative)", type: image }
       - { name: tuile2_titre, label: "Tuile bleue du milieu : titre", type: string }
       - { name: tuile2_texte, label: "Tuile bleue du milieu : petit texte", type: rich-text, options: { switcher: false, media: false } }
+      - { name: tuile2_photo, label: "Tuile bleue du milieu : photo de fond (facultative)", type: image }
       - { name: tuile3_titre, label: "Tuile bleue de droite : titre", type: string }
       - { name: tuile3_texte, label: "Tuile bleue de droite : petit texte", type: rich-text, options: { switcher: false, media: false } }
+      - { name: tuile3_photo, label: "Tuile bleue de droite : photo de fond (facultative)", type: image }
       - { name: titre_chiffres, label: "Titre de la bande des chiffres", type: string, description: "[annee] = année de la dernière édition. Les chiffres se modifient dans « 4. Archives » › l’édition concernée." }
       - { name: titre_rebours, label: "Titre du compte à rebours", type: string }
       - { name: rebours_jours, label: "Compte à rebours : mot « Jours »", type: string }
@@ -115,6 +118,7 @@ content:
     format: yaml
     fields:
       - { name: titre_page, label: "Grand titre en haut de page", type: string, description: "[annee] est remplacé automatiquement par l’année ci-dessous." }
+      - { name: photo_bandeau, label: "Photo de fond derrière le titre (facultative)", type: image }
       - { name: annee, label: "Année", type: number }
       - { name: dates, label: "Dates (en toutes lettres)", type: string, description: "Exemple : Mardi 1er et mercredi 2 juin 2027" }
       - { name: lieu, label: "Lieu", type: string }
@@ -145,9 +149,12 @@ content:
         fields:
           - { name: adresse, label: "Lieu", type: rich-text, options: { switcher: false, media: false } }
           - { name: acces, label: "Accès (transports, stationnement, accessibilité)", type: rich-text, options: { switcher: false, media: false } }
+          - { name: equipes, label: "Équipes (composition, âges)", type: rich-text, options: { switcher: false, media: false } }
+          - { name: tarif, label: "Participation (tarif)", type: rich-text, options: { switcher: false, media: false } }
           - { name: repas, label: "Repas", type: rich-text, options: { switcher: false, media: false } }
           - { name: hebergement, label: "Hébergement", type: rich-text, options: { switcher: false, media: false } }
           - { name: a_prevoir, label: "À prévoir", type: rich-text, options: { switcher: false, media: false } }
+          - { name: sante, label: "Traitements médicaux", type: rich-text, options: { switcher: false, media: false } }
       - { name: titre_inscription, label: "Bande bleue en bas : titre", type: string }
       - { name: lien_inscription, label: "Lien HelloAsso (inscription et paiement)", type: string, description: "Utilisé par tous les boutons « S’inscrire » du site. Laisser vide tant que les inscriptions ne sont pas ouvertes." }
       - name: texte_inscription
@@ -171,6 +178,7 @@ content:
     fields:
       - { name: titre_page, label: "Grand titre en haut de page", type: string }
       - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
+      - { name: photo_bandeau, label: "Photo de fond derrière le titre (facultative)", type: image }
 
   - name: editions
     label: "4. Archives : une fiche par édition passée"
@@ -182,6 +190,7 @@ content:
     fields:
       - { name: annee, label: "Année", type: number, required: true }
       - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
+      - { name: photo_bandeau, label: "Photo de fond derrière le titre (facultative)", type: image }
       - name: chiffres
         label: "Chiffres clés (aussi affichés sur l’accueil pour la dernière édition)"
         type: object
@@ -231,6 +240,7 @@ content:
     fields:
       - { name: titre_page, label: "Grand titre en haut de page", type: string }
       - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
+      - { name: photo_bandeau, label: "Photo de fond derrière le titre (facultative)", type: image }
       - name: liste
         label: "Liste des partenaires (aussi affichés sur l’accueil)"
         type: object
@@ -256,6 +266,7 @@ content:
     fields:
       - { name: titre_page, label: "Grand titre en haut de page", type: string }
       - { name: sous_titre, label: "Phrase sous le titre", type: rich-text, options: { switcher: false, media: false } }
+      - { name: photo_bandeau, label: "Photo de fond derrière le titre (facultative)", type: image }
       - name: contacts
         label: "Contacts"
         type: object
