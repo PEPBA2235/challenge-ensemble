@@ -1,3 +1,5 @@
-{% comment %} En-tête des pages intérieures, avec photo de fond facultative. {% endcomment %}
-{% assign ph = include.photo | strip %}
-<section class="bandeau-page{% if ph != '' %} bandeau-photo{% endif %}"{% if ph != '' %} style="background-image:url('{{ ph }}')"{% endif %}><div class="conteneur"><h1>{{ include.titre }}</h1>{% if include.sous_titre != blank %}<p>{{ include.sous_titre }}</p>{% endif %}</div></section>
+{% comment %} En-tête des pages intérieures, avec photo de fond et boutons facultatifs. {% endcomment %}
+{% assign ph = include.photo | strip %}{% assign l1 = include.lien1 | strip %}{% assign l2 = include.lien2 | strip %}
+<section class="bandeau-page{% if ph != '' %} bandeau-photo{% endif %}"{% if ph != '' %} style="background-image:url('{{ ph }}')"{% endif %}><div class="conteneur"><h1>{{ include.titre }}</h1>{% if include.sous_titre != blank %}<p>{{ include.sous_titre }}</p>{% endif %}
+{% if l1 != '' or l2 != '' %}<div class="actions" style="margin-top:24px">{% if l1 != '' %}<a class="bouton bouton-menthe" href="{{ l1 }}">{{ include.texte1 }}</a>{% endif %}{% if l2 != '' %}<a class="bouton bouton-contour" href="{{ l2 }}">{{ include.texte2 }}</a>{% endif %}</div>{% endif %}
+</div></section>

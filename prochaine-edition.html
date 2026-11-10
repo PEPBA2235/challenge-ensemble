@@ -5,7 +5,8 @@ titre: Prochaine édition
 ---
 {% assign p = site.data.prochaine %}
 {% capture t %}{{ p.titre_page | default: "Édition [annee]" | replace: "[annee]", p.annee }}{% endcapture %}{% capture st %}{{ p.dates | default: "Dates à venir" }}{% if p.lieu != blank %}, {{ p.lieu }}{% endif %}{% endcapture %}
-{% include bandeau-page.html titre=t sous_titre=st photo=p.photo_bandeau %}
+{% capture reg %}{{ p.reglement }}{% endcapture %}{% assign reg = reg | strip %}{% capture txt_reg %}{{ p.bouton_reglement | default: "Télécharger le règlement" }} (PDF){% endcapture %}{% capture txt_insc %}{{ site.data.general.menu_inscription | default: "S’inscrire" }}{% endcapture %}
+{% include bandeau-page.html titre=t sous_titre=st photo=p.photo_bandeau lien1=p.lien_inscription texte1=txt_insc lien2=reg texte2=txt_reg %}
 <section class="section"><div class="conteneur deux-colonnes">
   <div>
     <h2 style="margin-bottom:20px">{{ p.titre_programme | default: "Programme" }}</h2>
