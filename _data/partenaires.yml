@@ -4,12 +4,15 @@ photo_bandeau: /images/illustration-fair-play.jpg
 liste:
   - nom: Caisse d’Épargne
     logo: /images/partenaire-caisse-epargne.jpg
+    lien: https://www.caisse-epargne.fr/associations-ess/
     categorie: Partenaires financiers et institutionnels
   - nom: Kiwanis Club de Saint-Brieuc Armor
     logo: /images/partenaire-kiwanis.jpg
+    lien: https://kiwanis-saint-brieuc.com/
     categorie: Partenaires financiers et institutionnels
   - nom: PEP Bretill’Armor
     logo: /images/partenaire-pep-bretillarmor.jpg
+    lien: https://www.pepbretillarmor.org/
     categorie: Partenaires financiers et institutionnels
   - nom: Conseil départemental des Côtes-d’Armor
     logo: /images/partenaire-departement-cotes-armor.png
@@ -27,7 +30,7 @@ liste:
     logo: /images/partenaire-cdsa22.jpg
     categorie: Partenaires de l’animation
   - nom: Stéphane Appriou, éducateur sportif à Lanrodec
-    logo: /images/partenaire-stephane-appriou.png
+    logo: /images/capture-decran-2026-11-17-122955.png
     categorie: Partenaires de l’animation
 titre_devenir: Devenir partenaire
 devenir: Vous souhaitez soutenir le Challenge Ensemble ? Contactez-nous.
