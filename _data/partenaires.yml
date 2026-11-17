@@ -16,18 +16,23 @@ liste:
     categorie: Partenaires financiers et institutionnels
   - nom: Conseil départemental des Côtes-d’Armor
     logo: /images/partenaire-departement-cotes-armor.png
+    lien: https://cotesdarmor.fr/
     categorie: Partenaires financiers et institutionnels
   - nom: En Avant Guingamp
     logo: /images/partenaire-en-avant-guingamp.png
+    lien: https://www.eaguingamp.com/
     categorie: Partenaires financiers et institutionnels
   - nom: District de Football des Côtes-d’Armor
     logo: /images/capture-decran-2026-11-05-122836.png
+    lien: https://foot22.fff.fr/?doing_wp_cron=1794915984.0511789321899414062500
     categorie: Partenaires de l’animation
   - nom: Ligue de Bretagne de Football
     logo: /images/partenaire-ligue-bretagne-football.jpg
+    lien: https://footbretagne.fff.fr/?home
     categorie: Partenaires de l’animation
   - nom: Comité Départemental du Sport Adapté (CDSA22)
     logo: /images/partenaire-cdsa22.jpg
+    lien: https://cdsa22.com/
     categorie: Partenaires de l’animation
   - nom: Stéphane Appriou, éducateur sportif à Lanrodec
     logo: /images/capture-decran-2026-11-17-122955.png
